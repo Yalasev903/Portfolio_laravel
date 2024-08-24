@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-5 col-md-5 col-sm-12">
-                    <div class="cyber-content-img" data-aos="fade-up-left">
+                    <div class="cyber-content-img  pt-4" data-aos="fade-up-left">
                         <figure class="mb-0"><img src="{{ asset('templates/my_template/assets/images/cyber-security-left-img.png') }}" alt=""
                                 class="cyber-security-provider-img">
                         </figure>

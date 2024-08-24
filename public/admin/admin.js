@@ -23,7 +23,7 @@ $(document).ready(function () {
             items: [
                 'heading', '|',
                 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote',
-                'insertTable', 'mediaEmbed'
+                'insertTable', 'mediaEmbed', '|', 'codeBlock'
             ],
             shouldNotGroupWhenFull: true
         },

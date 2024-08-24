@@ -47,7 +47,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
+
                             <div class="form-group">
                                 <label>Текст</label>
                                 <textarea name="text" class="editor"></textarea>

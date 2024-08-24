@@ -12,7 +12,7 @@
                                    З досвідом у Figma, HTML5, CSS3, Bootstrap, Javascript, PHP, WordPress, MySQL та Laravel. Моя робота — це не лише код, а й мистецтво створення функціональних та естетичних веб-рішень. Щодня я вдосконалюю свої навички на Codewars, працюю з Figma, Canva та Tilda, щоб забезпечити найкращий результат для кожного проекту.</p>
                                 <div class="banner-btn discover-btn-banner">
                                     <a href="{{ url('/about') }}" class="text-decoration-none">Discover More</a>
-                                    <a href="" class="text-decoration-none play-button"><i class="fa-solid fa-play"></i></a>
+                                    <a href="#2Block" class="text-decoration-none play-button"><i class="fa-solid fa-play"></i></a>
                                 </div>
                             </div>
                             <div class="social-icons" data-aos="zoom-out-left">
@@ -33,7 +33,7 @@
                         </div>
                     </div>
                     <div class="row">
-                         <div class="col-12">
-                             <h3 class="text-center pt-2"  data-aos="fade-zoom-in">Навчання.</h3>
+                         <div class="col-12" id="2Block">
+                             <h3 class="text-center pt-2"  data-aos="fade-zoom-in" id="2">Навчання.</h3>
                          </div>
                      </div>
