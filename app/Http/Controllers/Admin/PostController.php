@@ -23,12 +23,12 @@ class PostController extends Controller
     public function create()
     {
         $categories = Category::orderBy('created_at', 'DESC')->get();
-    
+
         return view('admin.post.create', [
             'categories' => $categories
         ]);
     }
-    
+
 
     /**
      * Store a newly created resource in storage.

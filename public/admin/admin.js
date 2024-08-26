@@ -17,23 +17,23 @@ $(document).ready(function () {
     });
 
     // Инициализация CKEditor 5
-    ClassicEditor
-    .create(document.querySelector('.editor'), {
-        toolbar: {
-            items: [
-                'heading', '|',
-                'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote',
-                'insertTable', 'mediaEmbed', '|', 'codeBlock'
-            ],
-            shouldNotGroupWhenFull: true
-        },
-        placeholder: 'Введите текст...',
-        language: 'ru', // Установите язык, если нужно
-        // Добавьте другие параметры конфигурации по мере необходимости
-    })
-    .catch(error => {
-        console.error('Ошибка инициализации редактора:', error);
-    });
+    // ClassicEditor
+    // .create(document.querySelector('.editor'), {
+    //     toolbar: {
+    //         items: [
+    //             'heading', '|',
+    //             'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote',
+    //             'insertTable', 'mediaEmbed', '|', 'codeBlock'
+    //         ],
+    //         shouldNotGroupWhenFull: true
+    //     },
+    //     placeholder: 'Введите текст...',
+    //     language: 'ru', // Установите язык, если нужно
+    //     // Добавьте другие параметры конфигурации по мере необходимости
+    // })
+    // .catch(error => {
+    //     console.error('Ошибка инициализации редактора:', error);
+    // });
 
 });
 

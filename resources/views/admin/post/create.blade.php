@@ -48,11 +48,25 @@
                                 </select>
                             </div>
 
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label>Текст</label>
                                 <textarea name="text" class="editor"></textarea>
                             </div>
-                        </div>
+                        </div> --}}
+                        <!-- Place the first <script> tag in your HTML's <head> -->
+<script src="https://cdn.tiny.cloud/1/zz5yzfkvutel7xxsey78ithzogwrudzczlqmwlyft73cupew/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+
+<!-- Place the following <script> and <textarea> tags your HTML's <body> -->
+<script>
+  tinymce.init({
+    selector: 'textarea',
+    plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount linkchecker',
+    toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+  });
+</script>
+<textarea>
+  Welcome to TinyMCE!
+</textarea>
                         <!-- /.card-body -->
 
                         <div class="card-footer">
