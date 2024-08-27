@@ -1,6 +1,6 @@
 @extends('layouts.admin_layout')
 
-@section('title', 'Додати кейс')
+@section('title', 'Редагувати кейс')
 
 @section('content')
 <!-- Content Header (Page header) -->
@@ -9,7 +9,7 @@
         <div class="row mb-2">
             <div class="col-sm-3"></div><!-- /.col -->
             <div class="col-sm-3">
-                <h1 class="m-0">Додати кейс</h1>
+                <h1 class="m-0">Редагувати кейс: {{ $post['title'] }}</h1>
             </div><!-- /.col -->
             <div class="col-sm-3"></div><!-- /.col -->
             <div class="col-sm-3"></div><!-- /.col -->
@@ -32,18 +32,21 @@
 
                 <div class="card card-primary">
                     <!-- form start -->
-                    <form action="{{ route('post.store') }}" method="POST">
+                    <form action="{{ route('post.update', $post['id']) }}" method="POST">
                         @csrf
+                        @method('PUT')
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Назва</label>
-                                <input type="text" name="title" class="form-control" placeholder="Введіть назву кейса">
+                                <input type="text" value="{{ $post['title'] }}" name="title" class="form-control" placeholder="Введіть назву кейса">
                             </div>
                             <div class="form-group">
                                 <label>Категорії</label>
                                 <select name="cat_id" class="form-control" required>
                                     @foreach ($categories as $category)
-                                        <option value="{{ $category['id'] }}">{{ $category['title'] }}</option>
+                                        <option value="{{ $category['id'] }}" @if ($category['id'] == $post['cat_id']) selected
+                                        @endif>{{ $category['title'] }}
+                                    </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -103,13 +106,13 @@
 
                             <div class="form-group">
                                 <label>Текст</label>
-                                <textarea name="text" class="editor"></textarea>
+                                <textarea name="text" class="editor">{{ $post['text'] }}</textarea>
                             </div>
                         </div>
 <div class="form-group">
     <label for="feature_image">Функції Зображення</label>
-    <img src="" alt="" class="img-uploaded" style="display: block; width: 300px;">
-    <input type="text" class="form-control" id="feature_image" name="img" value="" readonly>
+    <img src="/{{ $post['img'] }}" alt="" class="img-uploaded" style="display: block; width: 300px;">
+    <input type="text" value="{{ $post['img'] }}" class="form-control" id="feature_image" name="img" value="" readonly>
     <a href="" class="popup_selector btn btn-primary" data-inputid="feature_image">Додати адресу Зображення</a>
 </div>
                         <!-- /.card-body -->
