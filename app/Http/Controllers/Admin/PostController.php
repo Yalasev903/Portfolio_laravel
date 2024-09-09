@@ -89,6 +89,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+
+        return redirect()->back()->withSuccess('Кейс видалено!');
     }
 }
