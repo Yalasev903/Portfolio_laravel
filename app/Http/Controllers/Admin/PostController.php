@@ -39,14 +39,22 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $post = new Post();
-        $post->title = $request->title;
-        $post->img = $request->img;
-        $post->text = $request->text;
-        $post->cat_id = $request->cat_id;
-        $post->save();
+    // Обновляем валидацию, чтобы не было ограничений на длину текста
+    $request->validate([
+        'title' => 'required|string|max:255',
+        'text' => 'required|string',  // Убираем ограничение по длине
+        'img' => 'nullable|string',
+        'cat_id' => 'required|exists:categories,id',
+    ]);
 
-        return redirect()->back()->withSucces('Кейс успішно додано!');
+    $post = new Post();
+    $post->title = $request->title;
+    $post->img = $request->img;
+    $post->text = $request->text;
+    $post->cat_id = $request->cat_id;
+    $post->save();
+
+    return redirect()->back()->withSuccess('Кейс успішно додано!');
     }
 
     /**
@@ -75,13 +83,21 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        $post->title = $request->title;
-        $post->img = $request->img;
-        $post->text = $request->text;
-        $post->cat_id = $request->cat_id;
-        $post->save();
+    // Обновляем валидацию, чтобы не было ограничений на длину текста
+    $request->validate([
+        'title' => 'required|string|max:255',
+        'text' => 'required|string',  // Убираем ограничение по длине
+        'img' => 'nullable|string',
+        'cat_id' => 'required|exists:categories,id',
+    ]);
 
-        return redirect()->back()->withSucces('Кейс успішно змінено!');
+    $post->title = $request->title;
+    $post->img = $request->img;
+    $post->text = $request->text;
+    $post->cat_id = $request->cat_id;
+    $post->save();
+
+    return redirect()->back()->withSuccess('Кейс успішно змінено!');
     }
 
     /**
