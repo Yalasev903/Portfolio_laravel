@@ -70,11 +70,11 @@ crossorigin="anonymous" referrerpolicy="no-referrer"/>
                                                  </div>
                                         </li>
                                         <li class="nav-item dropdown redlight-dropdown">
-                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Кейси</a>
+                                            <a class="nav-link" href="{{ route('cases_view.index') }}" id="navbarDropdown2" role="button"  aria-haspopup="true" aria-expanded="false">Кейси</a>
                                                 <div class="dropdown-menu dropdown-content-redlight blogs-section-drop-down">
-                                                    <ul class="list-unstyled">
+                                                    {{-- <ul class="list-unstyled">
                                                         <li class="nav-item"> <a class="dropdown-item fierce-menu nav-link" href="{{ url('/single-post') }}">Single Post</a></li>
-                                                     </ul>
+                                                     </ul> --}}
                                                 </div>
                                         </li>
                                         <li class="nav-item dropdown redlight-dropdown">

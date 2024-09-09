@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\PublicPostController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController;
 
@@ -22,6 +23,8 @@ Route::middleware(['role:admin'])->prefix('admin_panel')->group(function () {
 
 });
 
+Route::get('/cases_view', [PublicPostController::class, 'index'])->name('cases_view.index');
+Route::get('/cases_view/{id}', [PublicPostController::class, 'show'])->name('cases_view.show');
 
 
 Route::get('/', function () {
