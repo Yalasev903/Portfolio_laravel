@@ -1,21 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $post->title }}</title>
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-</head>
-<body>
-    @include('templates.my_template.partials.header')
+<!-- resources/views/cases_view/show.blade.php -->
+@include('templates.my_template.partials.header')
 
-    <div class="container">
-        <h1>{{ $post->title }}</h1>
-        <img src="{{ $post->img }}" alt="{{ $post->title }}" class="img-fluid">
-        <p>{{ $post->text }}</p>
-        <a href="{{ route('cases_view.index') }}" class="btn btn-primary">Назад до кейсів</a>
+<!-- BANNER-SECTION -->
+<div class="home-banner-section overflow-hidden">
+    <div class="banner-container-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 mb-md-0 mb-4 text-center">
+                    <div class="about-banner-text" data-aos="fade-up">
+                        <h1 class="text-white about-h1" data-aos="zoom-out-left">{{ $post->title }}</h1>
+                        <div class="about-btn">
+                            <a href="{{ url('/cases_view') }}" class="text-decoration-none">Кейси / {{ $post->title }}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
+<!-- header and banner section -->
 
-    @include('templates.my_template.partials.footer')
-</body>
-</html>
+<section class="blog-posts padding-top padding-bottom overflow single-post-blog overflow-hidden">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12">
+                <div class="post-item">
+                    <div class="post-item-wrap">
+                        <div class="post-image">
+                            <img src="..\{{ $post->img }}" alt="{{ $post->title }}" style="width: 100%;" />
+                        </div>
+                        <div class="post-item-description">
+                            <h2 class="mb-0 text-white">{{ $post->title }}</h2>
+                            <p class="text-white">{{ strip_tags($post->text) }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@include('templates.my_template.partials.footer')
