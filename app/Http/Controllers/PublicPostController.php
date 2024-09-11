@@ -24,4 +24,5 @@ class PublicPostController extends Controller
     $post = Post::findOrFail($id);
     return view('cases_view.show', compact('post'));
  }
+
 }

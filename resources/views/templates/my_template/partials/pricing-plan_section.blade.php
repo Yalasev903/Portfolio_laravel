@@ -24,7 +24,7 @@
                          Швидке завантаження<br>
                          Технічна підтримка (30 днів)</p>
                         <div class="order-now-btn">
-                            <a href="{{ url('/pricing') }}" class="text-decoration-none ">Замовити зараз</a>
+                            <a href="{{ url('/contact') }}" class="text-decoration-none ">Замовити зараз</a>
                         </div>
                     </div>
                 </div>
@@ -44,7 +44,7 @@
                          Швидке завантаження<br>
                          Технічна підтримка (40 днів)</p>
                         <div class="order-now-btn">
-                            <a href="{{ url('/pricing') }}" class="text-decoration-none ">Замовити зараз</a>
+                            <a href="{{ url('/contact') }}" class="text-decoration-none ">Замовити зараз</a>
                         </div>
                     </div>
                 </div>
@@ -67,7 +67,7 @@
                          Технічна підтримка (повний термін)
                      </p>
                         <div class="order-now-btn">
-                            <a href="{{ url('/pricing') }}" class="text-decoration-none ">Замовити зараз</a>
+                            <a href="{{ url('/contact') }}" class="text-decoration-none ">Замовити зараз</a>
                         </div>
                     </div>
                 </div>

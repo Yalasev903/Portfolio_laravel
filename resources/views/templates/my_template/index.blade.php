@@ -22,7 +22,7 @@
     <!-- ABOUT-TEAM-SECTION -->
     @include('templates.my_template.partials.about-team-section')
     <!-- Blogs-Section -->
-    @include('templates.my_template.partials.blogs-section')
+    {{-- @include('templates.my_template.partials.blogs-section') --}}
     <!-- Form-Section -->
-    @include('templates.my_template.partials.form-section')
+    {{-- @include('templates.my_template.partials.form-section') --}}
     @include('templates.my_template.partials.footer')
