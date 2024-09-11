@@ -27,7 +27,7 @@
                 <div class="post-item">
                     <img src="{{ $post->img }}" alt="{{ $post->title }}" class="img-fluid">
                     <h3>{{ $post->title }}</h3>
-                    <p class="text-white">{{ Str::limit(strip_tags($post->text), 150) }}</p>
+                    <p class="text-white">{{ Str::limit(html_entity_decode(strip_tags($post->text)), 150) }}</p>
                     <a href="{{ route('cases_view.show', $post->id) }}" class="btn btn-primary">Читати далі</a>
                 </div>
             </div>
