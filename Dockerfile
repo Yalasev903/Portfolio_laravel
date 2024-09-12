@@ -31,7 +31,7 @@ RUN chown -R www-data:www-data /var/www
 RUN chmod -R 755 /var/www/storage
 
 # Генерация ключа приложения Laravel
-RUN php artisan key:generate
+# RUN php artisan key:generate
 
 # Копируем конфигурацию Nginx
 COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
