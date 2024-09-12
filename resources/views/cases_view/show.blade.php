@@ -31,7 +31,8 @@
                         </div>
                         <div class="post-item-description">
                             <h2 class="mb-0 text-white">{{ $post->title }}</h2>
-                            <p class="text-white">{{ strip_tags($post->text) }}</p>
+                            <br>
+                            <p class="text-white">{{ Str::limit(html_entity_decode(strip_tags($post->text)), 150000) }}</p>
                         </div>
                     </div>
                 </div>

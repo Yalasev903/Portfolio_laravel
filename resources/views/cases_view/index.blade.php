@@ -23,9 +23,9 @@
     <div class="container">
         <div class="row">
             @foreach($posts as $post)
-            <div class="col-lg-4 col-md-6 mb-4">
+            <div class="col-lg-4 col-md-6 mb-4" >
                 <div class="post-item">
-                    <img src="{{ $post->img }}" alt="{{ $post->title }}" class="img-fluid">
+                    <img src="{{ $post->img }}" alt="{{ $post->title }}" class="card-img-top" style="height: 18rem; object-fit: cover;">
                     <h3>{{ $post->title }}</h3>
                     <p class="text-white">{{ Str::limit(html_entity_decode(strip_tags($post->text)), 150) }}</p>
                     <a href="{{ route('cases_view.show', $post->id) }}" class="btn btn-primary">Читати далі</a>
