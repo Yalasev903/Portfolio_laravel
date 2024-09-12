@@ -20,8 +20,8 @@
     </div>
     @include('templates.my_template.partials.pricing-plan_section')
     <!-- Clients_section -->
-    @include('templates.my_template.partials.clients_section')
+    {{-- @include('templates.my_template.partials.clients_section') --}}
     <!-- Form-Section -->
-    @include('templates.my_template.partials.form-section')
+    {{-- @include('templates.my_template.partials.form-section') --}}
  @include('templates.my_template.partials.footer')
 

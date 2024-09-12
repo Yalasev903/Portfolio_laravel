@@ -21,5 +21,5 @@
     <!--Faq-Section -->
     @include('templates.my_template.partials.faq-section')
         <!-- Form-Section -->
-        @include('templates.my_template.partials.form-section')
+        {{-- @include('templates.my_template.partials.form-section') --}}
       @include('templates.my_template.partials.footer')

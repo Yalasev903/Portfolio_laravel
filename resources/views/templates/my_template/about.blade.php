@@ -24,9 +24,9 @@
     <!-- boxes-section -->
     @include('templates.my_template.partials.boxes-section')
     <!-- Clients_section -->
-    @include('templates.my_template.partials.clients_section')
+    {{-- @include('templates.my_template.partials.clients_section') --}}
 <!-- ABOUT-TEAM-SECTION -->
     @include('templates.my_template.partials.about-team-section')
     <!-- Form-Section -->
-    @include('templates.my_template.partials.form-section')
+    {{-- @include('templates.my_template.partials.form-section') --}}
  @include('templates.my_template.partials.footer')

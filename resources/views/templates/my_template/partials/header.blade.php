@@ -65,7 +65,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer"/>
                                                     <ul class="list-unstyled">
                                                         <li class="nav-item"> <a class="dropdown-item nav-link" href="{{ url('/faq') }}">FAQs</a></li>
                                                         <li class="nav-item"> <a class="dropdown-item nav-link" href="{{ url('/teams') }}">Team</a></li>
-                                                        <li class="nav-item"> <a class="dropdown-item nav-link" href="{{ url('/testimonial') }}">Testimonials</a></li>
+                                                        {{-- <li class="nav-item"> <a class="dropdown-item nav-link" href="{{ url('/testimonial') }}">Testimonials</a></li> --}}
                                                     </ul>
                                                  </div>
                                         </li>
@@ -77,7 +77,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer"/>
                                                      </ul> --}}
                                                 </div>
                                         </li>
-                                        <li class="nav-item dropdown redlight-dropdown">
+                                        <li class="nav-item dropdown redlight-dropdown d-none">
 
                                             @if (Route::has('login'))
                                                 @auth
