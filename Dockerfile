@@ -44,8 +44,11 @@ RUN chmod -R 755 /var/www/storage
 # Генерация ключа приложения Laravel
 RUN php artisan key:generate || true
 
-# Открываем порт 8080
+# Копируем конфигурацию Nginx
+COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
+
+# Открываем порты
 EXPOSE 8080
 
-# Запускаем PHP-FPM
-CMD ["php-fpm"]
+# Стартовая команда
+CMD ["/bin/sh", "-c", "service nginx start && php-fpm"]
