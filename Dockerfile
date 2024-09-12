@@ -12,7 +12,6 @@ RUN apt-get update && apt-get install -y \
     unzip \
     libfreetype6-dev \
     libjpeg-dev \
-    libpng-dev \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Устанавливаем Composer
@@ -43,14 +42,10 @@ RUN chown -R www-data:www-data /var/www
 RUN chmod -R 755 /var/www/storage
 
 # Генерация ключа приложения Laravel
-# Это можно пропустить, так как ключ будет сгенерирован при первом запуске
-# RUN php artisan key:generate
-
-# Копируем конфигурацию Nginx
-COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
+RUN php artisan key:generate || true
 
 # Открываем порт 8080
 EXPOSE 8080
 
-# Запускаем Nginx и PHP-FPM
-CMD ["sh", "-c", "service nginx start && php-fpm"]
+# Запускаем PHP-FPM
+CMD ["php-fpm"]
