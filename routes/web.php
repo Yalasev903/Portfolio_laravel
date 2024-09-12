@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\PublicPostController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\ContactFormController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -22,6 +23,8 @@ Route::middleware(['role:admin'])->prefix('admin_panel')->group(function () {
     Route::resource('post', PostController::class);
 
 });
+
+Route::post('/contact-form', [ContactFormController::class, 'submit']);
 
 Route::get('/cases_view', [PublicPostController::class, 'index'])->name('cases_view.index');
 Route::get('/cases_view/{id}', [PublicPostController::class, 'show'])->name('cases_view.show');

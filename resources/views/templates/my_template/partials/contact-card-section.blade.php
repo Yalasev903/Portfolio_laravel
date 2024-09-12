@@ -31,7 +31,7 @@
                                         </ul>
 
                                     </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-12">
+                                    {{-- <div class="col-lg-6 col-md-6 col-sm-12">
                                         <div class="about-section-form">
                                             <form method="POST" action="{{ url('/contact-form') }}">
                                                 @csrf
@@ -55,7 +55,33 @@
                                                 </div>
                                             </form>
                                         </div>
-                                    </div>
+                                    </div> --}}
+                                                <!-- CONTACT FORM SECTION -->
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="about-section-form">
+                        <form id="contactForm" action="{{ url('/contact-form') }}" method="POST">
+                            @csrf
+                            <div class="form-group contact-form-margin">
+                                <input type="text" class="form-control input-text" placeholder="Ім'я" name="name" required>
+                            </div>
+                            <div class="form-group contact-form-margin">
+                                <input type="email" class="form-control input-text" placeholder="Email" name="email" required>
+                            </div>
+                            <div class="form-group contact-form-margin">
+                                <input type="text" class="form-control input-text" placeholder="Тема" name="subject" required>
+                            </div>
+                            <div class="form-group contact-form-margin-text-area">
+                                <textarea name="comments" cols="10" rows="10" class="form-control" placeholder="Ваше повідомлення" required></textarea>
+                            </div>
+                            <div class="contact-section-btn text-center">
+                                <button type="submit" class="btn btn-primary hover-effect">Відправити повідомлення</button>
+                            </div>
+                        </form>
+                        <!-- Сообщение о результате -->
+                        <div id="formResult"></div>
+                    </div>
+                </div>
+
                                 </div>
                             </div>
                         </div>
