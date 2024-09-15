@@ -48,7 +48,7 @@ RUN php artisan key:generate || true
 COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
 
 # Открываем порты
-EXPOSE 80
+EXPOSE 9000
 
 # Стартовая команда
 CMD ["sh", "-c", "php-fpm && nginx -g 'daemon off;'"]
