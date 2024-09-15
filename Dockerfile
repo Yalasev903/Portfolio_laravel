@@ -30,16 +30,13 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
 # Рабочая директория
 WORKDIR /var/www
 
-# Копируем файлы приложения для Composer и npm
-COPY composer.json composer.lock package.json package-lock.json ./
+# Копируем файлы приложения
+COPY . .
 
 # Устанавливаем зависимости PHP и Node.js
 RUN composer install --optimize-autoloader --no-dev \
     && npm install \
     && npm run build
-
-# Копируем все файлы приложения
-COPY . .
 
 # Оптимизация прав доступа
 RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache \
@@ -54,5 +51,5 @@ COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
 # Открываем порты
 EXPOSE 9000
 
-# Стартовая команда (используем переменную PORT от Railway)
+# Стартовая команда
 CMD ["sh", "-c", "php-fpm && nginx -g 'daemon off;'"]
