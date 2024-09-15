@@ -30,16 +30,20 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
 # Рабочая директория
 WORKDIR /var/www
 
-# Копируем файлы приложения
-COPY . .
+# Копируем только необходимые файлы для Composer и npm
+COPY composer.json composer.lock package.json package-lock.json ./
 
 # Устанавливаем зависимости PHP и Node.js
-RUN composer install --optimize-autoloader --no-dev
-RUN npm install && npm run build
+RUN composer install --optimize-autoloader --no-dev \
+    && npm install \
+    && npm run build
 
-# Настраиваем права доступа
-RUN chown -R www-data:www-data /var/www
-RUN chmod -R 755 /var/www/storage
+# Копируем все файлы приложения
+COPY . .
+
+# Оптимизация прав доступа (только необходимые папки)
+RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache \
+    && chmod -R 755 /var/www/storage /var/www/bootstrap/cache
 
 # Генерация ключа приложения Laravel
 RUN php artisan key:generate || true
@@ -52,4 +56,3 @@ EXPOSE 9000
 
 # Стартовая команда
 CMD ["sh", "-c", "php-fpm && nginx -g 'daemon off;'"]
-
