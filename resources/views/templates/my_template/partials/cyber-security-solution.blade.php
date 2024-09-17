@@ -28,13 +28,13 @@
 
                          </p>
                         <div class="cyber-contact-btn">
-                            <a href="{{ url('/contact') }}" class="text-decoration-none">Зв'язатися зі мною</a>
+                            <a href="{{ secure_url('/contact') }}" class="text-decoration-none">Зв'язатися зі мною</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-5 col-md-5 col-sm-12 text-md-right text-center">
                     <div class="cyber-content-img-right" data-aos="fade-up-right">
-                        <figure class="mb-0"><img src="{{ asset('templates/my_template/assets/images/cyber-security-right-img.png') }}" alt="" class="">
+                        <figure class="mb-0"><img src="{{ secure_asset('templates/my_template/assets/images/cyber-security-right-img.png') }}" alt="" class="">
                         </figure>
                     </div>
                 </div>

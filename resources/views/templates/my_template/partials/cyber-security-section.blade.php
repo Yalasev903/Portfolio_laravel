@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-lg-5 col-md-5 col-sm-12">
                     <div class="cyber-content-img  pt-4" data-aos="fade-up-left">
-                        <figure class="mb-0"><img src="{{ asset('templates/my_template/assets/images/cyber-security-left-img.png') }}" alt=""
+                        <figure class="mb-0"><img src="{{ secure_asset('templates/my_template/assets/images/cyber-security-left-img.png') }}" alt=""
                                 class="cyber-security-provider-img">
                         </figure>
                     </div>
@@ -23,7 +23,7 @@
                         <p class="security-services-p cyber-p-margin-bottom">Зв'яжіться зі мною
                          Якщо у вас є питання або ви хочете обговорити ваш проект, не соромтеся зв'язатися зі мною. Я завжди готовий допомогти вам реалізувати ваші ідеї.</p>
                         <div class="cyber-contact-btn">
-                            <a href="{{ url('/contact') }}" class="text-decoration-none">Зв'язатися зі мною</a>
+                            <a href="{{ secure_url('/contact') }}" class="text-decoration-none">Зв'язатися зі мною</a>
                         </div>
                     </div>
                 </div>

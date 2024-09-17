@@ -9,7 +9,7 @@
                                 <h1 class="text-white about-h1">Про мене</h1>
                                 <p class="text-white banner-paragraph">Ми прагнемо досконалості та професіоналізму.</p>
                                 <div class="about-btn">
-                                    <a href="{{ url('/about-us') }}" class="text-decoration-none">Home <span class="about-text-color"> / About</span></a>
+                                    <a href="{{ secure_url('/about-us') }}" class="text-decoration-none">Home <span class="about-text-color"> / About</span></a>
                                 </div>
                             </div>
                         </div>

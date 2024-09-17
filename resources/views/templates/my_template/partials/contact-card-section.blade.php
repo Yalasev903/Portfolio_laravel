@@ -8,13 +8,13 @@
                                         <p data-aos="fade-up-right">Я з вами зв'яжусь найближчим часом.</p>
                                         <ul class="list-unstyled about-us-list">
                                         <li class="contact-li"><div class="icons-rounded-box-contact">
-                                        <figure class="mb-0"><img src="{{ asset('templates/my_template/assets/images/contact-icon1.png') }}"  alt=""></figure></div>
+                                        <figure class="mb-0"><img src="{{ secure_asset('templates/my_template/assets/images/contact-icon1.png') }}"  alt=""></figure></div>
                                         <div class="contact-content">
                                                 <span class="contact-title">Де я:</span>
                                                  <span class="contact-parah">91 проспект Ново-Баварський, 61020, Україна, місто Харків</span></div></li>
 
                                           <li class="contact-li"><div class="icons-rounded-box-contact">
-                                            <figure class="mb-0"><img src="{{ asset('templates/my_template/assets/images/contact-icon2.png') }}" alt="">
+                                            <figure class="mb-0"><img src="{{ secure_asset('templates/my_template/assets/images/contact-icon2.png') }}" alt="">
                                             </figure>
                                         </div>
                                         <div class="contact-content">
@@ -22,7 +22,7 @@
                                             <span class="contact-parah">+3 8050 849 96 39   </span>
                                         </div></li>
                                         <li class="contact-li"><div class="icons-rounded-box-contact">
-                                            <figure class="mb-0"><img src="{{ asset('templates/my_template/assets/images/contact-icon3.png') }}" alt="">
+                                            <figure class="mb-0"><img src="{{ secure_asset('templates/my_template/assets/images/contact-icon3.png') }}" alt="">
                                             </figure>
                                         </div><div class="contact-content">
                                             <span class="contact-title">Email:</span>
@@ -59,7 +59,7 @@
                                                 <!-- CONTACT FORM SECTION -->
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="about-section-form">
-                        <form id="contactForm" action="{{ url('/contact-form') }}" method="POST">
+                        <form id="contactForm" action="{{ secure_url('/contact-form') }}" method="POST">
                             @csrf
                             <div class="form-group contact-form-margin">
                                 <input type="text" class="form-control input-text" placeholder="Ім'я" name="name" required>

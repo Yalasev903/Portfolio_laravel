@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12">
                     <div class="faq-content-img" data-aos="fade-right">
-                        <figure class="mb-0"><img src="{{ asset('templates/my_template/assets/images/accordian-left-img.png') }}" alt="" class="">
+                        <figure class="mb-0"><img src="{{ secure_asset('templates/my_template/assets/images/accordian-left-img.png') }}" alt="" class="">
                         </figure>
                     </div>
                 </div>

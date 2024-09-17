@@ -9,7 +9,7 @@
                         <h1 class="text-white about-h1" data-aos="zoom-out-left">Зв'язок зі мною</h1>
                         <p class="text-white banner-paragraph" data-aos="zoom-out-right">Я надаю високоякісні послуги в області веб-розробки та дизайну...</p>
                         <div class="about-btn">
-                            <a href="{{ url('/contact') }}" class="text-decoration-none">Головна <span class="about-text-color"> / Контакти</span></a>
+                            <a href="{{ secure_url('/contact') }}" class="text-decoration-none">Головна <span class="about-text-color"> / Контакти</span></a>
                         </div>
                     </div>
                 </div>

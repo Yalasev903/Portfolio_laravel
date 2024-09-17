@@ -8,7 +8,7 @@
                             <div class="about-banner-text"  data-aos="fade-up">
                                 <h1 class="text-white about-h1" data-aos="zoom-out-left">Загальні запити FAQ?</h1>
                                 <div class="about-btn">
-                                    <a href="{{ url('/faq') }}" class="text-decoration-none">Home <span class="about-text-color"> / FAQ</span></a>
+                                    <a href="{{ secure_url('/faq') }}" class="text-decoration-none">Home <span class="about-text-color"> / FAQ</span></a>
                                 </div>
                             </div>
                         </div>

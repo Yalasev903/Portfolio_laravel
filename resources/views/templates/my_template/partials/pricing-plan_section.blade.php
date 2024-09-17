@@ -12,7 +12,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-12">
                     <div class="about-us-content" data-aos="fade-up">
                         <div class="icons-rounded-box">
-                            <figure class="mb-0"><img src="{{ asset('templates/my_template/assets/images/pricing-plan-icon1.png') }}" alt="">
+                            <figure class="mb-0"><img src="{{ secure_asset('templates/my_template/assets/images/pricing-plan-icon1.png') }}" alt="">
                             </figure>
                         </div>
                         <h4 class="pricing-plan-h4">Beginner</h4>
@@ -24,14 +24,14 @@
                          Швидке завантаження<br>
                          Технічна підтримка (30 днів)</p>
                         <div class="order-now-btn">
-                            <a href="{{ url('/contact') }}" class="text-decoration-none ">Замовити зараз</a>
+                            <a href="{{ secure_url('/contact') }}" class="text-decoration-none ">Замовити зараз</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
                     <div class="about-us-content" data-aos="fade-up">
                         <div class="icons-rounded-box">
-                            <figure class="mb-0 icon-color"><img src="{{ asset('templates/my_template/assets/images/pricing-plan-icon2.png') }}" alt="">
+                            <figure class="mb-0 icon-color"><img src="{{ secure_asset('templates/my_template/assets/images/pricing-plan-icon2.png') }}" alt="">
                             </figure>
                         </div>
                         <h4 class="pricing-plan-h4">Business</h4>
@@ -44,14 +44,14 @@
                          Швидке завантаження<br>
                          Технічна підтримка (40 днів)</p>
                         <div class="order-now-btn">
-                            <a href="{{ url('/contact') }}" class="text-decoration-none ">Замовити зараз</a>
+                            <a href="{{ secure_url('/contact') }}" class="text-decoration-none ">Замовити зараз</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
                     <div class="about-us-content" data-aos="fade-up">
                         <div class="icons-rounded-box">
-                            <figure class="mb-0"><img src="{{ asset('templates/my_template/assets/images/pricing-plan-icon3.png') }}" alt="">
+                            <figure class="mb-0"><img src="{{ secure_asset('templates/my_template/assets/images/pricing-plan-icon3.png') }}" alt="">
                             </figure>
                         </div>
                         <h4 class="pricing-plan-h4">Exclusive</h4>
@@ -67,7 +67,7 @@
                          Технічна підтримка (повний термін)
                      </p>
                         <div class="order-now-btn">
-                            <a href="{{ url('/contact') }}" class="text-decoration-none ">Замовити зараз</a>
+                            <a href="{{ secure_url('/contact') }}" class="text-decoration-none ">Замовити зараз</a>
                         </div>
                     </div>
                 </div>

@@ -27,7 +27,7 @@
                         <div class="col-lg-6 col-md-6 col-sm-12">
                             <div class="banner-img-content position-relative" data-aos="fade-up">
                                 <figure class="banner-img mb-0 wow slideInRight" data-wow-duration="2s">
-                                    <img class="img-fluid banner-img-width pb-4" src="{{ asset('templates/my_template/assets/images/banner-img.png') }}" alt="" />
+                                    <img class="img-fluid banner-img-width pb-4" src="{{ secure_asset('templates/my_template/assets/images/banner-img.png') }}" alt="" />
                                 </figure>
                             </div>
                         </div>

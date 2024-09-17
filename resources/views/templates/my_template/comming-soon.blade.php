@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Comming Soon | RedLight</title>
-    <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('templates/my_template/assets/images/favicons/apple-icon-57x57.png') }}">
-    <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('templates/my_template/assets/images/favicons/apple-icon-60x60.png') }}">
+    <link rel="apple-touch-icon" sizes="57x57" href="{{ secure_asset('templates/my_template/assets/images/favicons/apple-icon-57x57.png') }}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{{ secure_asset('templates/my_template/assets/images/favicons/apple-icon-60x60.png') }}">
     <link rel="apple-touch-icon" sizes="72x72" href="templates/my_template/assets/images/favicons/apple-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="76x76" href="templates/my_template/assets/images/favicons/apple-icon-76x76.png">
     <link rel="apple-touch-icon" sizes="114x114" href="templates/my_template/assets/images/favicons/apple-icon-114x114.png">

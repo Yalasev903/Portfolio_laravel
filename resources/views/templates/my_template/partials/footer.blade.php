@@ -1,7 +1,7 @@
     <!-- Footer-Section -->
     <div class="footer-section">
         <div class="about-right-icon">
-            <figure class="footer-icon"><img src="{{ asset('templates/my_template/assets/images/footer-left.png') }}" alt="" class="img-fluid">
+            <figure class="footer-icon"><img src="{{ secure_asset('templates/my_template/assets/images/footer-left.png') }}" alt="" class="img-fluid">
             </figure>
         </div>
         <div class="footer-outer-margin" data-aos="fade-up">
@@ -10,7 +10,7 @@
                     <div class="col-lg-4 col-md-4 col-sm-6">
                         <div class="footer-content1" data-aos="flip-left">
                             <figure>
-                                <a href="{{ url('/') }}"><img src="{{ asset('templates/my_template/assets/images/redlight-logo.png') }}" alt="" class="img-fluid" /></a>
+                                <a href="{{ url('/') }}"><img src="{{ secure_asset('templates/my_template/assets/images/redlight-logo.png') }}" alt="" class="img-fluid" /></a>
                             </figure>
                             <p class="red-light-footer-p">Професійний досвід Я маю багаторічний досвід роботи з PHP, WordPress та Laravel, що дозволяє мені створювати надійні та ефективні веб-рішення.</p>
                             <div class="social-icons teams-social-icons">
@@ -34,19 +34,19 @@
                             </li>
                             <li>
                                 <i class="fa-solid fa-caret-right"></i>
-                                <a href="{{ url('/') }}" class="text-decoration-none footer-link-p">
+                                <a href="{{ secure_url('/') }}" class="text-decoration-none footer-link-p">
                                    Beginner
                                 </a>
                             </li>
                             <li>
                                 <i class="fa-solid fa-caret-right"></i>
-                                <a href="{{ url('/about') }}" class="text-decoration-none footer-link-p">
+                                <a href="{{ secure_url('/about') }}" class="text-decoration-none footer-link-p">
                                    Business
                                 </a>
                             </li>
                             <li>
                                 <i class="fa-solid fa-caret-right"></i>
-                                <a href="{{ url('/services') }}" class="text-decoration-none footer-link-p">
+                                <a href="{{ secure_url('/services') }}" class="text-decoration-none footer-link-p">
                                    Exclusive
                                 </a>
                             </li>
@@ -61,26 +61,26 @@
                             </li>
                             <li>
                                 <i class="fa-solid fa-caret-right"></i>
-                                <a href="{{ url('/') }}" class="text-decoration-none footer-link-p">
+                                <a href="{{ secure_url('/') }}" class="text-decoration-none footer-link-p">
                                     Підтримка
                                 </a>
                             </li>
                             <li>
                                 <i class="fa-solid fa-caret-right"></i>
-                                <a href="{{ url('/contact') }}" class="text-decoration-none footer-link-p">
+                                <a href="{{ secure_url('/contact') }}" class="text-decoration-none footer-link-p">
                                     Зв'язок зі мною
                                 </a>
                             </li>
                             <li>
                                 <i class="fa-solid fa-caret-right"></i>
-                                <a href="{{ url('/about') }}" class="text-decoration-none footer-link-p">
+                                <a href="{{ secure_url('/about') }}" class="text-decoration-none footer-link-p">
                                     О нас
                                 </a>
                             </li>
 
                             <li>
                                 <i class="fa-solid fa-caret-right"></i>
-                                <a href="{{ url('/faq') }}" class="text-decoration-none footer-link-p">
+                                <a href="{{ secure_url('/faq') }}" class="text-decoration-none footer-link-p">
                                     FAQ
                                 </a>
                             </li>
@@ -125,7 +125,7 @@
                 <div class="row">
                     <div class="footer-bar-content w-100 overflow-hidden">
                         <p class="text-size-16 mb-0">
-                            Copyright ©2024 ********.com All Rights Reserved
+                            Copyright ©2024 Portfolio by Yaroslav Slastchev! All Rights Reserved
                         </p>
                     </div>
                 </div>
@@ -134,14 +134,14 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
-    <script src="{{ asset('templates/my_template/assets/js/animations.js') }}"></script>
-    <script src="{{ asset('templates/my_template/assets/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('templates/my_template/assets/js/jquery-3.6.0.min.js') }}"></script>
-    <script src="{{ asset('templates/my_template/assets/js/popper.min.js') }}"></script>
-    <script src="{{ asset('templates/my_template/assets/js/custom-script.js') }}"></script>
-    <script src="{{ asset('templates/my_template/assets/js/owl.carousel.js') }}"></script>
+    <script src="{{ secure_asset('templates/my_template/assets/js/animations.js') }}"></script>
+    <script src="{{ secure_asset('templates/my_template/assets/js/bootstrap.min.js') }}"></script>
+    <script src="{{ secure_asset('templates/my_template/assets/js/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ secure_asset('templates/my_template/assets/js/popper.min.js') }}"></script>
+    <script src="{{ secure_asset('templates/my_template/assets/js/custom-script.js') }}"></script>
+    <script src="{{ secure_asset('templates/my_template/assets/js/owl.carousel.js') }}"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="{{ asset('templates/my_template/assets/js/text-animations.js') }}"></script>
+    <script src="{{ secure_asset('templates/my_template/assets/js/text-animations.js') }}"></script>
 
 </body>
 

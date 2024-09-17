@@ -10,7 +10,7 @@
                               <p class="text-white banner-paragraph" data-aos="zoom-out-right"> Excepteur sint occaecat cupidatat non proident
                                 sunt in culra aui officia aeserunt.</p>
                               <div class="about-btn">
-                                  <a href="{{ url('/single-post') }}" class="text-decoration-none">Blog <span class="about-text-color"> / Single Post</span></a>
+                                  <a href="{{ secure_url('/single-post') }}" class="text-decoration-none">Blog <span class="about-text-color"> / Single Post</span></a>
                               </div>
                           </div>
                       </div>
@@ -29,7 +29,7 @@
               <div class="post-item-wrap">
                 <div class="post-image">
                   <a href="#">
-                    <img alt="" src="{{ asset('templates/my_template/assets/images/post-featured-img1.jpg') }}" style="width: 100%;" />
+                    <img alt="" src="{{ secure_asset('templates/my_template/assets/images/post-featured-img1.jpg') }}" style="width: 100%;" />
                   </a>
                 </div>
                 <div class="post-item-description">

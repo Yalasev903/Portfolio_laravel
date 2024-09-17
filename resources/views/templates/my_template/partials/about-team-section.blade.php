@@ -1,7 +1,7 @@
     <!-- ABOUT-TEAM-SECTION -->
     <section class="about-us-section-start about-teams-section overflow-hidden">
         <div class="about-right-icon position-relative" data-aos="fade-up-right">
-            <figure class="whyus-icon"><img src="{{ asset('templates/my_template/assets/images/about-us-section-right-icon.png') }}" alt=""
+            <figure class="whyus-icon"><img src="{{ secure_asset('templates/my_template/assets/images/about-us-section-right-icon.png') }}" alt=""
                     class="img-fluid">
             </figure>
         </div>

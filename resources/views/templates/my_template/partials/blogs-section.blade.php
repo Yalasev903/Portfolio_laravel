@@ -14,7 +14,7 @@
                     <div class="blogs-section">
                         <a href="{{ url('/single-post') }}">
                             <div class="images-blog" data-aos="fade-up">
-                                <figure class="mb-0"><img class="img-fluid" src="{{ asset('templates/my_template/assets/images/blog-section-img1.png') }}" alt="">
+                                <figure class="mb-0"><img class="img-fluid" src="{{ secure_asset('templates/my_template/assets/images/blog-section-img1.png') }}" alt="">
                                 </figure>
                             </div>
                             <h5 class="blogs-h5">Protect Your Workplace From Cyber Attacks</h5>
@@ -25,9 +25,9 @@
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
                     <div class="blogs-section">
-                        <a href="{{ url('/single-post') }}">
+                        <a href="{{ secure_url('/single-post') }}">
                             <div class="images-blog" data-aos="fade-up">
-                                <figure class="mb-0"><img class="img-fluid" src="{{ asset('templates/my_template/assets/images/blog-section-img2.png') }}" alt="">
+                                <figure class="mb-0"><img class="img-fluid" src="{{ secure_asset('templates/my_template/assets/images/blog-section-img2.png') }}" alt="">
                                 </figure>
                             </div>
                             <h5 class="blogs-h5">The Security Risks Of Changing Package Owners
@@ -39,9 +39,9 @@
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
                     <div class="blogs-section">
-                        <a href="{{ url('/single-post') }}">
+                        <a href="{{ secure_url('/single-post') }}">
                             <div class="images-blog" data-aos="fade-up">
-                                <figure class="mb-0"><img class="img-fluid" src="{{ asset('templates/my_template/assets/images/blog-section-img3.png') }}" alt="">
+                                <figure class="mb-0"><img class="img-fluid" src="{{ secure_asset('templates/my_template/assets/images/blog-section-img3.png') }}" alt="">
                                 </figure>
                             </div>
                             <h5 class="blogs-h5">Avoid Mistakes In Social Media Posts</h5>

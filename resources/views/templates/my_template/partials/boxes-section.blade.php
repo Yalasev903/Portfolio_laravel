@@ -5,7 +5,7 @@
                 <div class="col-lg-3 col-md-3 col-sm-12">
                     <div class="about-us-content" data-aos="fade-up">
                         <div class="icons-rounded-box">
-                            <figure class="mb-0"><img src="{{ asset('templates/my_template/assets/images/cyber-section-icon1.png') }}" alt="">
+                            <figure class="mb-0"><img src="{{ secure_asset('templates/my_template/assets/images/cyber-section-icon1.png') }}" alt="">
                             </figure>
                         </div>
                         <h3 class="counetr-heading"><span class="counter">10</span><span
@@ -16,7 +16,7 @@
                 <div class="col-lg-3 col-md-3 col-sm-12">
                     <div class="about-us-content" data-aos="fade-up">
                         <div class="icons-rounded-box">
-                            <figure class="mb-0 icon-color"><img src="{{ asset('templates/my_template/assets/images/cyber-section-icon2.png') }}" alt="">
+                            <figure class="mb-0 icon-color"><img src="{{ secure_asset('templates/my_template/assets/images/cyber-section-icon2.png') }}" alt="">
                             </figure>
                         </div>
                         <h3 class="counetr-heading"><span class="counter">100</span><span
@@ -28,7 +28,7 @@
                 <div class="col-lg-3 col-md-3 col-sm-12">
                     <div class="about-us-content"  data-aos="fade-up">
                         <div class="icons-rounded-box">
-                            <figure class="mb-0"><img src="{{ asset('templates/my_template/assets/images/cyber-section-icon3.png') }}" alt="">
+                            <figure class="mb-0"><img src="{{ secure_asset('templates/my_template/assets/images/cyber-section-icon3.png') }}" alt="">
                             </figure>
                         </div>
                         <h3 class="counetr-heading"><span class="counter">100</span><span
@@ -39,7 +39,7 @@
                 <div class="col-lg-3 col-md-3 col-sm-12">
                     <div class="about-us-content"  data-aos="fade-up">
                         <div class="icons-rounded-box">
-                            <figure class="mb-0"><img src="{{ asset('templates/my_template/assets/images/cyber-section-icon4.png') }}" alt="">
+                            <figure class="mb-0"><img src="{{ secure_asset('templates/my_template/assets/images/cyber-section-icon4.png') }}" alt="">
                             </figure>
                         </div>
                         <h3 class="counetr-heading"><span class="counter">100</span><span

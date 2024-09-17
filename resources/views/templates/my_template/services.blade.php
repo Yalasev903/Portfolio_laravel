@@ -9,7 +9,7 @@
                                 <h1 class="text-white about-h1">Що я пропоную</h1>
                                 <p class="text-white banner-paragraph">Професійні послуги веб-розробки та дизайну!</p>
                                 <div class="about-btn">
-                                    <a href="{{ url('/services') }}" class="text-decoration-none">Home <span class="about-text-color"> / Services</span></a>
+                                    <a href="{{ secure_url('/services') }}" class="text-decoration-none">Home <span class="about-text-color"> / Services</span></a>
                                 </div>
                             </div>
                         </div>

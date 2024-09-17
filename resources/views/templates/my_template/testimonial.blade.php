@@ -9,7 +9,7 @@
                                 <h1 class="text-white about-h1" data-aos="zoom-out-left">Testimonials</h1>
                                 <p class="text-white banner-paragraph" data-aos="zoom-out-right">Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusm tempor incididunt ut labore et dolore magna aliqua.</p>
                                 <div class="about-btn">
-                                    <a href="{{ url('/testimonial') }}" class="text-decoration-none">Home <span class="about-text-color"> / Testimonials</span></a>
+                                    <a href="{{ secure_url('/testimonial') }}" class="text-decoration-none">Home <span class="about-text-color"> / Testimonials</span></a>
                                 </div>
                             </div>
                         </div>

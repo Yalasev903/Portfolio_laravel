@@ -9,7 +9,7 @@
                                 {{-- <h1 class="text-white about-h1"  data-aos="zoom-out-left">Над сайтом працював</h1>
                                 <p class="text-white banner-paragraph"  data-aos="zoom-out-right">Уся розробка на Laravel.</p> --}}
                                 <div class="about-btn">
-                                    <a href="{{ url('/teams') }}" class="text-decoration-none">Home <span class="about-text-color"> / Team</span></a>
+                                    <a href="{{ secure_url('/teams') }}" class="text-decoration-none">Home <span class="about-text-color"> / Team</span></a>
                                 </div>
                             </div>
                         </div>

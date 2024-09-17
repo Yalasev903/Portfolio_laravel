@@ -1,7 +1,7 @@
     <!-- Clients_section -->
     <section class="clients-section clients-section-right-img1">
         <div class="position-relative">
-          <figure class="about2-left-img"><img src="{{ asset('templates/my_template/assets/images/about-section2-left-img.png') }}" alt="" class="img-fluid">
+          <figure class="about2-left-img"><img src="{{ secure_asset('templates/my_template/assets/images/about-section2-left-img.png') }}" alt="" class="img-fluid">
           </figure>
         </div>
           <div class="container">
@@ -15,7 +15,7 @@
               <div class="row">
                   <div class="col-lg-6 col-md-6 col-sm-12">
                      <div class="clients-outer-box  position-relative"  data-aos="fade-up">
-                      <figure class="clients-outer-box-figure"><img src="{{ asset('templates/my_template/assets/images/client-section-img1.png') }}" alt=""></figure>
+                      <figure class="clients-outer-box-figure"><img src="{{ secure_asset('templates/my_template/assets/images/client-section-img1.png') }}" alt=""></figure>
                       <figure class="position-absolute icon-figure-quotes"><img src="{{ asset('templates/my_template/assets/images/quotes-icon.png') }}" alt=""></figure>
                        <div class="clients-right-content" data-aos="fade-up">
                           <span class="spencer-span">Spencer Simpson</span>
@@ -32,8 +32,8 @@
                   </div>
                   <div class="col-lg-6 col-md-6 col-sm-12">
                       <div class="clients-outer-box  position-relative"  data-aos="fade-up">
-                          <figure class="clients-outer-box-figure"><img src="{{ asset('templates/my_template/assets/images/client-section-img2.png') }}" alt=""></figure>
-                          <figure class="position-absolute icon-figure-quotes"><img src="{{ asset('templates/my_template/assets/images/quotes-icon.png') }}" alt=""></figure>
+                          <figure class="clients-outer-box-figure"><img src="{{ secure_asset('templates/my_template/assets/images/client-section-img2.png') }}" alt=""></figure>
+                          <figure class="position-absolute icon-figure-quotes"><img src="{{ secure_asset('templates/my_template/assets/images/quotes-icon.png') }}" alt=""></figure>
                            <div class="clients-right-content"  data-aos="fade-up">
                               <span class="spencer-span">Spencer Simpson</span>
                               <span class="ceo-p">CEO - Company</span>
@@ -51,7 +51,7 @@
 
               </div>
               <div class="clients-section-btn">
-                  <a href="{{ url('/teams') }}" class="text-decoration-none">View All Review</a>
+                  <a href="{{ secure_url('/teams') }}" class="text-decoration-none">View All Review</a>
               </div>
           </div>
       </section>
