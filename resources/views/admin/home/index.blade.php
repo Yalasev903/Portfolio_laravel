@@ -40,7 +40,7 @@
           <!-- small box -->
           <div class="small-box bg-success">
             <div class="inner">
-              <h3>{{ $category_count }}</sup></h3>
+              <h3>5</h3>
 
               <p>Категорій</p>
             </div>
