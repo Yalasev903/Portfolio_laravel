@@ -10,17 +10,17 @@
         <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 
         <!-- elFinder CSS (REQUIRED) -->
-        <link rel="stylesheet" type="text/css" href="{{ asset($dir.'/css/elfinder.min.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset($dir.'/css/theme.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ secure_asset($dir.'/css/elfinder.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ secure_asset($dir.'/css/theme.css') }}">
 
         <!-- elFinder JS (REQUIRED) -->
-        <script src="{{ asset($dir.'/js/elfinder.min.js') }}"></script>
+        <script src="{{ secure_asset($dir.'/js/elfinder.min.js') }}"></script>
 
         @if($locale)
             <!-- elFinder translation (OPTIONAL) -->
-            <script src="{{ asset($dir."/js/i18n/elfinder.$locale.js") }}"></script>
+            <script src="{{ secure_asset($dir."/js/i18n/elfinder.$locale.js") }}"></script>
         @endif
-        
+
         <!-- elFinder initialization (REQUIRED) -->
         <script type="text/javascript">
             var FileBrowserDialogue = {
@@ -42,11 +42,11 @@
                     @if($locale)
                         lang: '{{ $locale }}', // locale
                     @endif
-                    customData: { 
+                    customData: {
                         _token: '{{ csrf_token() }}'
                     },
                     url: '{{ route("elfinder.connector") }}',  // connector URL
-                    soundPath: '{{ asset($dir.'/sounds') }}',
+                    soundPath: '{{ secure_asset($dir.'/sounds') }}',
                     getFileCallback: function(file) { // editor callback
                         FileBrowserDialogue.mySubmit(file.url); // pass selected file path to TinyMCE
                     }

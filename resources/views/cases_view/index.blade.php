@@ -9,7 +9,7 @@
                     <div class="about-banner-text" data-aos="fade-up">
                         <h1 class="text-white about-h1" data-aos="zoom-out-left">Мої кейси</h1>
                         <div class="about-btn">
-                            <a href="{{ url('/cases_view') }}" class="text-decoration-none">Кейси/</a>
+                            <a href="{{ secure_url('/cases_view') }}" class="text-decoration-none">Кейси/</a>
                         </div>
                     </div>
                 </div>

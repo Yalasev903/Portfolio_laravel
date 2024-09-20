@@ -55,7 +55,7 @@
           <!-- small box -->
           <div class="small-box bg-warning">
             <div class="inner">
-              <h3>Додати кейс</h3>
+              <h3>Додати <br/> кейс</h3>
 
             </div>
             <div class="icon">
@@ -69,7 +69,7 @@
           <!-- small box -->
           <div class="small-box bg-danger">
             <div class="inner">
-              <h3>Додати категорію</h3>
+              <h3>Додати <br/> категорію</h3>
 
             </div>
             <div class="icon">

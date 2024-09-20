@@ -10,7 +10,7 @@
                     <div class="about-banner-text" data-aos="fade-up">
                         <h1 class="text-white about-h1" data-aos="zoom-out-left">{{ $post->title }}</h1>
                         <div class="about-btn">
-                            <a href="{{ url('/cases_view') }}" class="text-decoration-none">Кейси / {{ $post->title }}</a>
+                            <a href="{{ secure_url('/cases_view') }}" class="text-decoration-none">Кейси / {{ $post->title }}</a>
                         </div>
                     </div>
                 </div>
