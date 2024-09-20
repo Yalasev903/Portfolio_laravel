@@ -5,20 +5,20 @@
         <title>elFinder 2.0</title>
 
         <!-- jQuery and jQuery UI (REQUIRED) -->
-        <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 
         <!-- elFinder CSS (REQUIRED) -->
-        <link rel="stylesheet" type="text/css" href="{{ asset($dir.'/css/elfinder.min.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ asset($dir.'/css/theme.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ secure_asset($dir.'/css/elfinder.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ secure_asset($dir.'/css/theme.css') }}">
 
         <!-- elFinder JS (REQUIRED) -->
-        <script src="{{ asset($dir.'/js/elfinder.min.js') }}"></script>
+        <script src="{{ secure_asset($dir.'/js/elfinder.min.js') }}"></script>
 
         @if($locale)
             <!-- elFinder translation (OPTIONAL) -->
-            <script src="{{ asset($dir."/js/i18n/elfinder.$locale.js") }}"></script>
+            <script src="{{ secure_asset($dir."/js/i18n/elfinder.$locale.js") }}"></script>
         @endif
 
         <!-- elFinder initialization (REQUIRED) -->
@@ -39,11 +39,11 @@
                     @if($locale)
                         lang: '{{ $locale }}', // locale
                     @endif
-                    customData: { 
+                    customData: {
                         _token: '{{ csrf_token() }}'
                     },
                     url: '{{ route("elfinder.connector") }}',  // connector URL
-                    soundPath: '{{ asset($dir.'/sounds') }}',
+                    soundPath: '{{ secure_asset($dir.'/sounds') }}',
                     getFileCallback : function(file) {
                         window.opener.CKEDITOR.tools.callFunction(funcNum, file.url);
                         window.close();
