@@ -34,6 +34,6 @@
                     </div>
                     <div class="row">
                          <div class="col-12" id="2Block">
-                             <h3 class="text-center pt-2"  data-aos="fade-zoom-in" id="2">Навчання.</h3>
+                             <h3 class="text-center pt-2"  data-aos="fade-zoom-in" id="2">Навчання</h3>
                          </div>
                      </div>
