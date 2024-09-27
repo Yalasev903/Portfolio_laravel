@@ -23,6 +23,23 @@
 <meta name="msapplication-TileImage" content="assets/images/favicons/ms-icon-144x144.png">
 <meta name="theme-color" content="#ffffff">
 <meta name="csrf-token" content="{{ csrf_token() }}">
+
+<!-- Open Graph Meta Tags -->
+<meta property="og:title" content="@yield('title')" />
+<meta property="og:description" content="Я професійний програміст дизайнер з досвідом у Figma, HTML5, CSS3, Bootstrap, Javascript, PHP, WordPress, MySQL та Laravel. Моя робота — це не лише код, а й мистецтво створення функціональних та естетичних веб-рішень." />
+<meta property="og:image" content="{{ secure_asset('templates/my_template/assets/images/about-team-img2.png') }}" />
+<meta property="og:image:alt" content="Профессиональный программист-дизайнер" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="{{ secure_url('/') }}" />
+
+<!-- Twitter Meta Tags -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="@yield('title')" />
+<meta name="twitter:description" content="Я професійний програміст дизайнер з досвідом у Figma, HTML5, CSS3, Bootstrap, Javascript, PHP, WordPress, MySQL та Laravel. Моя робота — це не лише код, а й мистецтво створення функціональних та естетичних веб-рішень." />
+<meta name="twitter:image" content="{{ secure_asset('templates/my_template/assets/images/about-team-img2.png') }}" />
+<meta name="twitter:image:alt" content="Профессиональный программист-дизайнер" />
+
+
 <link rel="stylesheet" href="{{ secure_asset('templates/my_template/assets/css/bootstrap.min.css') }}"/>
 <link rel="stylesheet" href="{{ secure_asset('templates/my_template/assets/css/style.css') }}"/>
 <link rel="stylesheet" href="{{ secure_asset('templates/my_template/assets/css/mobile.css') }}"/>
