@@ -17,7 +17,6 @@ RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 
 RUN npm install && npm run build
 
-ENV PORT=8000
 EXPOSE ${PORT}
 
 CMD php artisan key:generate --force && \
