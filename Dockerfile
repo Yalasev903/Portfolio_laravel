@@ -1,25 +1,35 @@
-FROM php:8.2-fpm
+# ---------- Dockerfile ----------
+    FROM php:8.2-fpm
 
-RUN apt-get update && apt-get install -y \
-    libpng-dev libonig-dev libxml2-dev libzip-dev zip unzip git curl npm sqlite3 libsqlite3-dev \
-    && docker-php-ext-install pdo pdo_mysql pdo_sqlite mbstring exif pcntl bcmath zip gd
+    # Установка необходимых расширений PHP и системных пакетов
+    RUN apt-get update && apt-get install -y \
+        nginx \
+        libpng-dev libonig-dev libxml2-dev libzip-dev \
+        zip unzip git curl npm sqlite3 libsqlite3-dev \
+        supervisor \
+        && docker-php-ext-install pdo pdo_mysql pdo_sqlite mbstring exif pcntl bcmath zip gd
 
-COPY --from=composer:2.6 /usr/bin/composer /usr/bin/composer
+    # Установка Composer
+    COPY --from=composer:2.6 /usr/bin/composer /usr/bin/composer
 
-WORKDIR /var/www
+    # Копируем проект
+    WORKDIR /var/www
+    COPY . .
 
-COPY . .
+    # Копируем .env
+    RUN cp .env.example .env
 
-# Копируем .env.example как .env для artisan
-RUN cp .env.example .env
+    # Установка зависимостей
+    RUN composer install --no-interaction --prefer-dist --optimize-autoloader
+    RUN npm install && npm run build
 
-RUN composer install --no-interaction --prefer-dist --optimize-autoloader
+    # Копируем конфиги nginx и entrypoint
+    COPY docker/nginx.conf /etc/nginx/nginx.conf
+    COPY docker/entrypoint.sh /entrypoint.sh
+    RUN chmod +x /entrypoint.sh
 
-RUN npm install && npm run build
+    # Открываем порт
+    EXPOSE 80
 
-EXPOSE ${PORT}
-
-CMD php artisan key:generate --force && \
-    php artisan migrate --force && \
-    php artisan config:cache && \
-    php artisan serve --host=0.0.0.0 --port=${PORT}
+    # Запускаем через entrypoint
+    CMD ["/entrypoint.sh"]
