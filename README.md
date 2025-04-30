@@ -1,3 +1,54 @@
+## 🚀 Автоматический деплой Laravel-проекта на Railway с Docker
+
+Этот проект разворачивается полностью автоматически на [Railway](https://railway.app/) с помощью Docker.
+
+### 📦 Что внутри
+- Laravel 11 + PHP 8.2
+- MySQL от Railway
+- Node.js + Vite сборка
+- Полная поддержка `.env` через Railway Variables
+- Автоматическая генерация ключа и миграция базы
+
+---
+
+### 🔧 Как развернуть
+
+1. **Импортируй проект в Railway**  
+   👉 [https://railway.app/new](https://railway.app/new)
+
+2. **Добавь MySQL Plugin**
+   - Railway создаст базу данных и подставит переменные:
+     - `MYSQLHOST`, `MYSQLDATABASE`, `MYSQLUSER`, `MYSQLPASSWORD`
+
+3. **Убедись, что переменная `PORT` добавлена автоматически**  
+   Railway это сделает сам.
+
+4. **Проект запустится автоматически**
+   - Laravel будет слушать нужный порт
+   - `php artisan key:generate`, `migrate`, `config:cache` выполняются внутри Dockerfile
+
+---
+
+### 🐳 Используемый `Dockerfile`
+
+```Dockerfile
+FROM php:8.2-fpm
+RUN apt-get update && apt-get install -y \
+    libpng-dev libonig-dev libxml2-dev libzip-dev zip unzip git curl npm sqlite3 libsqlite3-dev \
+    && docker-php-ext-install pdo pdo_mysql pdo_sqlite mbstring exif pcntl bcmath zip gd
+COPY --from=composer:2.6 /usr/bin/composer /usr/bin/composer
+WORKDIR /var/www
+COPY . .
+RUN composer install --no-interaction --prefer-dist --optimize-autoloader
+RUN npm install && npm run build
+ENV PORT=8000
+EXPOSE ${PORT}
+CMD php artisan key:generate --force && \
+    php artisan migrate --force && \
+    php artisan config:cache && \
+    php artisan serve --host=0.0.0.0 --port=${PORT}
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
