@@ -37,7 +37,6 @@ EXPOSE ${PORT}
 
 # Запуск Laravel с генерацией ключа, сессиями, миграцией и запуском сервера
 CMD php artisan key:generate --force && \
-    php artisan session:table && \
     php artisan migrate --force && \
     php artisan config:cache && \
     php artisan serve --host=0.0.0.0 --port=${PORT}
