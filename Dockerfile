@@ -1,35 +1,31 @@
 FROM php:8.2-fpm
 
-# Установка необходимых расширений PHP и системных пакетов
+# Установка зависимостей
 RUN apt-get update && apt-get install -y \
-    nginx \
-    libpng-dev libonig-dev libxml2-dev libzip-dev \
-    zip unzip git curl npm sqlite3 libsqlite3-dev \
-    supervisor \
+    libpng-dev libonig-dev libxml2-dev libzip-dev zip unzip git curl npm sqlite3 libsqlite3-dev \
     && docker-php-ext-install pdo pdo_mysql pdo_sqlite mbstring exif pcntl bcmath zip gd
 
 # Установка Composer
 COPY --from=composer:2.6 /usr/bin/composer /usr/bin/composer
 
-# Копируем проект
+# Рабочая директория
 WORKDIR /var/www
+
+# Копируем проект
 COPY . .
 
-# Копируем .env
-RUN cp .env.example .env
-
-# Установка зависимостей
-RUN composer install --no-interaction --prefer-dist --optimize-autoloader
-RUN npm install && npm run build
-
-# Копируем конфиги nginx и entrypoint
+# Копируем nginx конфиг и entrypoint
 COPY docker/nginx.conf /etc/nginx/nginx.conf
 COPY docker/entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
+# Устанавливаем зависимости
+RUN composer install --no-interaction --prefer-dist --optimize-autoloader
+RUN npm install && npm run build
 
-# Открываем порт
-EXPOSE 80
+# Проброс переменной порта для Railway
+ENV PORT=80
+EXPOSE ${PORT}
 
-# Запускаем через entrypoint
+# Стартовый скрипт
 CMD ["/entrypoint.sh"]

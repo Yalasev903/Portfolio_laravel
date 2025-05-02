@@ -1,15 +1,19 @@
 #!/bin/bash
 
-# Копируем .env, если он отсутствует
+cd /var/www
+
+# Копируем .env, если отсутствует
 [ ! -f .env ] && cp .env.example .env
 
-# Показываем APP_KEY (но не перезаписываем)
-php artisan key:generate --show
+# Генерируем APP_KEY, если не установлен
+if ! grep -q "APP_KEY=base64" .env; then
+    php artisan key:generate --force
+fi
 
 # Выполняем миграции и кешируем конфиг
-php artisan migrate --force
-php artisan config:cache
+php artisan migrate --force || true
+php artisan config:cache || true
 
 # Запускаем php-fpm и nginx
-php-fpm --nodaemonize --fpm-config /usr/local/etc/php-fpm.conf --force-stderr --allow-to-run-as-root &
+php-fpm --nodaemonize --fpm-config /usr/local/etc/php-fpm.conf &
 nginx -g "daemon off;"
