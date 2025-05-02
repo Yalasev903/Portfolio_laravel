@@ -1,17 +1,15 @@
 #!/bin/bash
 
-# Копируем .env если не существует
+# Копируем .env, если он отсутствует
 [ ! -f .env ] && cp .env.example .env
 
-# Генерация ключа приложения
-php artisan key:generate --force
+# Показываем APP_KEY (но не перезаписываем)
+php artisan key:generate --show
 
-# Миграции
+# Выполняем миграции и кешируем конфиг
 php artisan migrate --force
-
-# Кеширование конфигов
 php artisan config:cache
 
-# Запуск php-fpm и nginx
+# Запускаем php-fpm и nginx
 php-fpm -D
 nginx -g "daemon off;"
