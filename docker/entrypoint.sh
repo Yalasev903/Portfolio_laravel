@@ -11,5 +11,5 @@ php artisan migrate --force
 php artisan config:cache
 
 # Запускаем php-fpm и nginx
-php-fpm -F &
+php-fpm --nodaemonize --fpm-config /usr/local/etc/php-fpm.conf --force-stderr --allow-to-run-as-root &
 nginx -g "daemon off;"
