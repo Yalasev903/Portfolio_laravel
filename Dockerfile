@@ -27,8 +27,6 @@ COPY docker/nginx.conf /etc/nginx/nginx.conf
 COPY docker/entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-# ❗ ВАЖНО: ls запускается после установки PHP и перед запуском
-RUN ls -la /run/php/ || true
 
 # Открываем порт
 EXPOSE 80

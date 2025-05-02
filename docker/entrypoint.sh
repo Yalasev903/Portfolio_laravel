@@ -11,5 +11,5 @@ php artisan migrate --force
 php artisan config:cache
 
 # Запускаем php-fpm и nginx
-php-fpm -F
+php-fpm -F &
 nginx -g "daemon off;"
