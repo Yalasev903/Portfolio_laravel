@@ -12,25 +12,27 @@ RUN docker-php-ext-install pdo pdo_mysql pdo_sqlite mbstring exif pcntl bcmath z
 # Устанавливаем Composer
 COPY --from=composer:2.6 /usr/bin/composer /usr/bin/composer
 
-# Переходим в рабочую директорию и копируем проект
+# Рабочая директория
 WORKDIR /var/www
+
+# Копируем все файлы проекта
 COPY . .
 
-# Устанавливаем зависимости Laravel
+# Установка зависимостей Laravel
 RUN composer install --no-interaction --prefer-dist --optimize-autoloader
+
+# Установка Node-зависимостей и сборка фронта
 RUN npm install && npm run build
 
 # Подставляем .env если отсутствует
-RUN [ ! -f .env ] && cp .env.example .env || true
+RUN cp .env.example .env || true
 
-# Генерируем ключ и очищаем конфиг
-RUN php artisan config:clear && php artisan key:generate --force
+# Генерируем APP_KEY и очищаем кэш
+RUN php artisan key:generate --force && php artisan config:clear
 
-# Правильный порт для Railway
+# Указываем Railway-порт
 ENV PORT=8080
-EXPOSE ${PORT}
+EXPOSE 8080
 
-# Финальная команда запуска с логом
-CMD echo "🎯 Starting Laravel on port ${PORT}..." && \
-    php artisan migrate --force && \
-    php artisan serve --host=0.0.0.0 --port=${PORT}
+# Запускаем миграции и стартуем сервер
+CMD php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=8080
