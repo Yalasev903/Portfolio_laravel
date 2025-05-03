@@ -1,31 +1,62 @@
-# Используем PHP с FPM
+# Laravel base
 FROM php:8.2-fpm
 
-# Установка зависимостей
+# Установим зависимости
 RUN apt-get update && apt-get install -y \
-    libpng-dev libonig-dev libxml2-dev \
-    libzip-dev zip unzip git curl npm sqlite3 libsqlite3-dev \
+    nginx \
+    libzip-dev \
+    zip unzip git curl npm nodejs sqlite3 libsqlite3-dev \
+    libpng-dev libonig-dev libxml2-dev libcurl4-openssl-dev \
     && docker-php-ext-install pdo pdo_mysql pdo_sqlite mbstring exif pcntl bcmath zip gd
 
-# Установка Composer
+# Установим Composer
 COPY --from=composer:2.6 /usr/bin/composer /usr/bin/composer
 
-# Рабочая директория
+# Создаем рабочую директорию
 WORKDIR /var/www
 
 # Копируем проект
 COPY . .
 
-# Устанавливаем PHP и JS зависимости
+# Устанавливаем зависимости
 RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 RUN npm install && npm run build
 
-# Генерация .env и ключа
-RUN cp .env.example .env || true
+# Копируем .env, если он не существует
+RUN [ ! -f .env ] && cp .env.example .env || true
+
+# Генерация ключа и кеш конфигурации
 RUN php artisan config:clear && php artisan key:generate --force
 
-# Пробрасываем порт (Railway сам подставит)
-EXPOSE 9000
+# Применяем миграции
+RUN php artisan migrate --force || true
 
-# Laravel работает через php-fpm — запускаем его
-CMD ["php-fpm"]
+# Настройки nginx
+RUN echo "server {
+    listen 80;
+    index index.php index.html;
+    root /var/www/public;
+
+    location / {
+        try_files \$uri \$uri/ /index.php?\$query_string;
+    }
+
+    location ~ \.php$ {
+        include fastcgi_params;
+        fastcgi_pass 127.0.0.1:9000;
+        fastcgi_param SCRIPT_FILENAME \$document_root\$fastcgi_script_name;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+}" > /etc/nginx/sites-enabled/default
+
+# Удалим дефолтный файл, если он есть
+RUN rm -f /etc/nginx/sites-enabled/default.conf
+
+# Указываем порт
+EXPOSE 80
+
+# Запускаем Supervisor-подобный процесс — nginx и php-fpm
+CMD service nginx start && php-fpm
