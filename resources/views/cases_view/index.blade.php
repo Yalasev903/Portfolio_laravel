@@ -1,4 +1,5 @@
 @include('templates.my_template.partials.header')
+@php use Illuminate\Support\Str; @endphp
 
 <!-- BANNER-SECTION -->
 <div class="home-banner-section overflow-hidden">
