@@ -1,7 +1,6 @@
-@include('templates.my_template.partials.header')
 @php use Illuminate\Support\Str; @endphp
+@include('templates.my_template.partials.header')
 
-<!-- BANNER-SECTION -->
 <div class="home-banner-section overflow-hidden">
     <div class="banner-container-box">
         <div class="container">
@@ -18,21 +17,22 @@
         </div>
     </div>
 </div>
-<!-- header and banner section -->
 
 <section class="blog-posts padding-top padding-bottom overflow single-post-blog overflow-hidden">
     <div class="container">
         <div class="row">
-            @foreach($posts as $post)
-            <div class="col-lg-4 col-md-6 mb-4" >
-                <div class="post-item">
-                    <img src="{{ $post->img }}" alt="{{ $post->title }}" class="card-img-top" style="height: 18rem; object-fit: cover;">
-                    <h3>{{ $post->title }}</h3>
-                    <p class="text-white">{{ Str::limit(html_entity_decode(strip_tags($post->text)), 150) }}</p>
-                    <a href="{{ route('cases_view.show', $post->id) }}" class="btn btn-primary">Читати далі</a>
+            @forelse($posts as $post)
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="post-item">
+                        <img src="{{ $post->img ?? asset('images/default.jpg') }}" alt="{{ $post->title ?? '' }}" class="card-img-top" style="height: 18rem; object-fit: cover;">
+                        <h3>{{ $post->title ?? 'Без назви' }}</h3>
+                        <p class="text-white">{{ Str::limit(strip_tags($post->text ?? ''), 150) }}</p>
+                        <a href="{{ route('cases_view.show', $post->id) }}" class="btn btn-primary">Читати далі</a>
+                    </div>
                 </div>
-            </div>
-        @endforeach
+            @empty
+                <p class="text-white">Кейсів поки немає.</p>
+            @endforelse
         </div>
     </div>
 </section>
