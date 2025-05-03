@@ -1,11 +1,10 @@
-FROM php:8.2-cli
+# Используем PHP с FPM
+FROM php:8.2-fpm
 
-# Устанавливаем зависимости вручную
+# Установка зависимостей
 RUN apt-get update && apt-get install -y \
     libpng-dev libonig-dev libxml2-dev \
-    unzip git curl zip libsqlite3-dev \
-    libzip-dev pkg-config npm \
-    && docker-php-ext-configure zip \
+    libzip-dev zip unzip git curl npm sqlite3 libsqlite3-dev \
     && docker-php-ext-install pdo pdo_mysql pdo_sqlite mbstring exif pcntl bcmath zip gd
 
 # Установка Composer
@@ -17,21 +16,16 @@ WORKDIR /var/www
 # Копируем проект
 COPY . .
 
-# Установка зависимостей Laravel
+# Устанавливаем PHP и JS зависимости
 RUN composer install --no-interaction --prefer-dist --optimize-autoloader
-
-# Сборка ассетов (если используешь Vite)
 RUN npm install && npm run build
 
-# Копируем .env если отсутствует
+# Генерация .env и ключа
 RUN cp .env.example .env || true
-
-# Генерация APP_KEY
 RUN php artisan config:clear && php artisan key:generate --force
 
-# Railway требует переменную PORT (по умолчанию 8080)
-ENV PORT=8080
-EXPOSE ${PORT}
+# Пробрасываем порт (Railway сам подставит)
+EXPOSE 9000
 
-# Laravel встроенный сервер
-CMD php artisan serve --host=0.0.0.0 --port=${PORT}
+# Laravel работает через php-fpm — запускаем его
+CMD ["php-fpm"]
