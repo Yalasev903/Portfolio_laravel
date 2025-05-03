@@ -8,6 +8,9 @@ sleep 5
 echo "📦 Running migrations..."
 php artisan migrate --force
 
+# ✅ Запуск сидеров
+php artisan db:seed --force
+
 # Запустить Laravel
 echo "🚀 Starting Laravel server..."
 exec "$@"
