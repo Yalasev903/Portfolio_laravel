@@ -6,14 +6,13 @@ cd /var/www
 [ ! -f .env ] && cp .env.example .env
 
 # Генерируем APP_KEY, если не установлен
-if ! grep -q "APP_KEY=base64" .env; then
-    php artisan key:generate --force
+if ! grep -q "^APP_KEY=" .env || [ -z "$(grep ^APP_KEY= .env | cut -d '=' -f2)" ]; then
+    php artisan key:generate
 fi
 
-# Выполняем миграции и кешируем конфиг
+# Миграции и кеш
 php artisan migrate --force || true
 php artisan config:cache || true
 
-# Запускаем php-fpm и nginx
-php-fpm --nodaemonize --fpm-config /usr/local/etc/php-fpm.conf &
-nginx -g "daemon off;"
+# Старт php-fpm
+php-fpm --nodaemonize --fpm-config /usr/local/etc/php-fpm.conf
