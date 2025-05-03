@@ -1,8 +1,10 @@
-FROM php:8.2-fpm
+# Используем PHP с нужными расширениями
+FROM php:8.2-cli
 
-# Установка зависимостей системы
+# Установка зависимостей
 RUN apt-get update && apt-get install -y \
-    libpng-dev libonig-dev libxml2-dev libzip-dev zip unzip git curl npm sqlite3 libsqlite3-dev \
+    libpng-dev libonig-dev libxml2-dev zip unzip git curl \
+    sqlite3 libsqlite3-dev npm \
     && docker-php-ext-install pdo pdo_mysql pdo_sqlite mbstring exif pcntl bcmath zip gd
 
 # Установка Composer
@@ -11,27 +13,19 @@ COPY --from=composer:2.6 /usr/bin/composer /usr/bin/composer
 # Рабочая директория
 WORKDIR /var/www
 
-# Копируем Laravel проект
+# Копируем файлы проекта
 COPY . .
 
-# Установка PHP-зависимостей Laravel
+# Установка зависимостей Laravel
 RUN composer install --no-interaction --prefer-dist --optimize-autoloader
-
-# Установка Node зависимостей и сборка
 RUN npm install && npm run build
 
-# Railway требует указать порт
-ENV PORT=80
+# Генерация ключа приложения (если нет APP_KEY)
+RUN cp .env.example .env || true && php artisan config:clear && php artisan key:generate
+
+# Порт, ожидаемый Railway
+ENV PORT=8080
 EXPOSE ${PORT}
 
-# Запуск Laravel
-CMD bash -c '\
-    if [ ! -f .env ]; then cp .env.example .env; fi && \
-    if ! grep -q "^APP_KEY=" .env || [ -z "$(grep ^APP_KEY= .env | cut -d "=" -f2)" ]; then \
-        php artisan key:generate; \
-    fi && \
-    php artisan config:clear && \
-    php artisan cache:clear && \
-    php artisan migrate --force || true && \
-    php artisan config:cache && \
-    php-fpm --nodaemonize --fpm-config /usr/local/etc/php-fpm.conf'
+# Команда запуска Laravel на Railway
+CMD php artisan serve --host=0.0.0.0 --port=${PORT}
