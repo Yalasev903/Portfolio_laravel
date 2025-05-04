@@ -1,11 +1,16 @@
 #!/bin/bash
 
+# Подождать БД (можно использовать sleep 5 для Railway)
 echo "⏳ Waiting for DB..."
 sleep 5
 
-echo "📦 Running migrations and seeders..."
+# Выполнить миграции
+echo "📦 Running migrations..."
 php artisan migrate --force
+
+# ✅ Запуск сидеров
 php artisan db:seed --force
 
-echo "🚀 Starting Supervisor (nginx + php-fpm)..."
-exec /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
+# Запустить Laravel
+echo "🚀 Starting Laravel server..."
+exec "$@"
