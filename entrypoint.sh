@@ -1,16 +1,19 @@
 #!/bin/bash
 
-# Подождать БД (можно использовать sleep 5 для Railway)
-echo "⏳ Waiting for DB..."
-sleep 5
+echo "⏳ Waiting for DB on $DB_HOST:$DB_PORT..."
 
-# Выполнить миграции
+for i in {1..30}; do
+    nc -z -v -w1 $DB_HOST $DB_PORT && break
+    echo "Waiting... ($i)"
+    sleep 1
+done
+
 echo "📦 Running migrations..."
 php artisan migrate --force
 
-# ✅ Запуск сидеров
+echo "🌱 Seeding..."
 php artisan db:seed --force
 
-# Запустить Laravel
-echo "🚀 Starting Laravel server..."
-exec "$@"
+echo "🚀 Starting Laravel (php-fpm + nginx)..."
+php-fpm &
+nginx -g "daemon off;"
