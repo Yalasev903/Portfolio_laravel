@@ -2,7 +2,7 @@ FROM php:8.2-fpm
 
 RUN apt-get update && apt-get install -y \
     git zip unzip curl libzip-dev libpng-dev libonig-dev libxml2-dev \
-    sqlite3 libsqlite3-dev nginx npm nodejs supervisor netcat
+    sqlite3 libsqlite3-dev nginx npm nodejs supervisor netcat-openbsd
 
 RUN docker-php-ext-install pdo pdo_mysql pdo_sqlite mbstring exif pcntl bcmath zip
 
