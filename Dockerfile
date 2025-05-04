@@ -1,9 +1,9 @@
-FROM php:8.2-cli
+FROM php:8.2-fpm
 
 # Устанавливаем зависимости
 RUN apt-get update && apt-get install -y \
     git zip unzip curl libzip-dev libpng-dev libonig-dev libxml2-dev \
-    sqlite3 libsqlite3-dev npm nodejs
+    sqlite3 libsqlite3-dev nginx npm nodejs supervisor
 
 # Устанавливаем PHP-расширения
 RUN docker-php-ext-install pdo pdo_mysql pdo_sqlite mbstring exif pcntl bcmath zip
@@ -17,29 +17,27 @@ WORKDIR /var/www
 # Копируем проект
 COPY . .
 
-# Устанавливаем зависимости PHP
+# Composer и Vite
 RUN composer install --no-interaction --prefer-dist --optimize-autoloader
-
-# Устанавливаем зависимости для NPM и собираем ассеты (для Bootstrap, Vue и т.п.)
 RUN npm install --legacy-peer-deps && npm run build
 
-# Создаём .env, если отсутствует
+# Копируем nginx конфиг
+COPY nginx.conf /etc/nginx/nginx.conf
+
+# Копируем supervisor конфиг
+COPY supervisor.conf /etc/supervisor/conf.d/supervisord.conf
+
+# Права и ключ
 RUN cp .env.example .env || true
+RUN php artisan key:generate --force
+RUN php artisan config:clear && php artisan config:cache
+RUN chmod -R 775 storage bootstrap/cache && chown -R www-data:www-data storage bootstrap/cache
 
-# Генерируем ключ и чистим кэш
-RUN php artisan key:generate --force && php artisan config:clear && php artisan config:cache
+# Открываем порт
+EXPOSE 8080
 
-# Устанавливаем права на storage и bootstrap/cache
-RUN chown -R www-data:www-data storage bootstrap/cache && chmod -R 775 storage bootstrap/cache
-
-# Копируем entrypoint
+# Копируем энтрипоинт
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-# Открываем порт
-ENV PORT=8080
-EXPOSE 8080
-
-# Запуск
 ENTRYPOINT ["/entrypoint.sh"]
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8080"]
