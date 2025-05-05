@@ -37,7 +37,10 @@ class PostSeeder extends Seeder
         ];
 
         foreach ($posts as $post) {
-            Post::create($post);
+            Post::updateOrCreate(
+                ['title' => $post['title']], // Уникальное поле
+                $post                         // Данные для обновления или создания
+            );
         }
     }
 }
