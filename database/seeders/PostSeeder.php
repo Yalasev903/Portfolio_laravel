@@ -10,24 +10,34 @@ class PostSeeder extends Seeder
 {
     public function run(): void
     {
-        // Убедимся, что есть хотя бы одна категория
-        $category = Category::first();
-        if (!$category) {
-            $category = Category::create(['title' => 'Без категории']);
+        // Категории (создаются, если ещё не существуют)
+        $devCategory = Category::firstOrCreate(['title' => 'Разработка']);
+        $designCategory = Category::firstOrCreate(['title' => 'Дизайн']);
+        $marketingCategory = Category::firstOrCreate(['title' => 'Маркетинг']);
+
+        $posts = [
+            [
+                'title' => 'Сайт бронювання (Booking clone)',
+                'img' => 'images/portfolio/booking.webp',
+                'text' => 'Сайт бронювання на Laravel з підтримкою API для готелів та авто, автоматична конвертація зображень у .webp, адміністрування CMS.',
+                'cat_id' => $devCategory->id,
+            ],
+            [
+                'title' => 'Чат додаток на Laravel (Chirper)',
+                'img' => 'images/portfolio/chirper.webp',
+                'text' => 'Чат-додаток з реєстрацією, профілем, редагуванням та видаленням повідомлень. Реалізовано на Laravel Jetstream.',
+                'cat_id' => $devCategory->id,
+            ],
+            [
+                'title' => 'Книга рецептів (WordPress)',
+                'img' => 'images/portfolio/recipes.webp',
+                'text' => 'Мультиязичний сайт рецептів з підтримкою плагінів, зображеннями через ChatGPT 4.0, генерацією тексту за допомогою AI.',
+                'cat_id' => $designCategory->id,
+            ]
+        ];
+
+        foreach ($posts as $post) {
+            Post::create($post);
         }
-
-        Post::create([
-            'title' => 'Кейс №1',
-            'img' => 'images/example.webp',
-            'text' => 'Описание кейса №1',
-            'cat_id' => $category->id,
-        ]);
-
-        Post::create([
-            'title' => 'Кейс №2',
-            'img' => 'images/example2.webp',
-            'text' => 'Описание кейса №2',
-            'cat_id' => $category->id,
-        ]);
     }
 }
