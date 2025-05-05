@@ -24,13 +24,18 @@
             <div class="col-xl-12 col-lg-12">
                 <div class="post-item">
                     <div class="post-item-wrap">
-                        <div class="post-image">
-                            <img src="{{ $post->img ?? asset('images/default.jpg') }}" alt="{{ $post->title ?? '' }}" style="width: 100%;" />
+                        {{-- Главное изображение поста --}}
+                        <div class="post-image mb-4">
+                            <img src="{{ asset($post->img ?? 'images/default.jpg') }}" alt="{{ $post->title ?? '' }}" style="width: 100%;" />
                         </div>
+
+                        {{-- Описание и текст --}}
                         <div class="post-item-description">
                             <h2 class="mb-0 text-white">{{ $post->title ?? '' }}</h2>
                             <br>
-                            <p class="text-white">{{ Str::limit(strip_tags($post->text ?? ''), 150000) }}</p>
+                            <div class="text-white">
+                                {!! $post->text !!}
+                            </div>
                         </div>
                     </div>
                 </div>
