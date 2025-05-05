@@ -1,55 +1,50 @@
 <!DOCTYPE html>
 <html lang="zxx">
-<head>
-<meta charset="UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>@yield('title')</title>
-<link rel="apple-touch-icon" sizes="57x57" href="{{ secure_asset('templates/my_template/assets/images/favicons/apple-icon-57x57.png') }}">
-<link rel="apple-touch-icon" sizes="60x60" href="{{ secure_asset('templates/my_template/assets/images/favicons/apple-icon-60x60.png') }}">
-<link rel="apple-touch-icon" sizes="72x72" href="{{ secure_asset('templates/my_template/assets/images/favicons/apple-icon-72x72.png') }}">
-<link rel="apple-touch-icon" sizes="76x76" href="{{ secure_asset('templates/my_template/assets/images/favicons/apple-icon-76x76.png') }}">
-<link rel="apple-touch-icon" sizes="114x114" href="{{ secure_asset('templates/my_template/assets/images/favicons/apple-icon-114x114.png') }}">
-<link rel="apple-touch-icon" sizes="120x120" href="{{ secure_asset('templates/my_template/assets/images/favicons/apple-icon-120x120.png') }}">
-<link rel="apple-touch-icon" sizes="144x144" href="{{ secure_asset('templates/my_template/assets/images/favicons/apple-icon-144x144.png') }}">
-<link rel="apple-touch-icon" sizes="152x152" href="{{ secure_asset('templates/my_template/assets/images/favicons/apple-icon-152x152.png') }}">
-<link rel="apple-touch-icon" sizes="180x180" href="{{ secure_asset('templates/my_template/assets/images/favicons/apple-icon-180x180.png') }}">
-<link rel="icon" type="image/png" sizes="192x192"  href="{{ secure_asset('templates/my_template/assets/images/favicons/android-icon-192x192.png') }}">
-<link rel="icon" type="image/png" sizes="32x32" href="{{ secure_asset('templates/my_template/assets/images/favicons/favicon-32x32.png') }}">
-<link rel="icon" type="image/png" sizes="96x96" href="{{ secure_asset('templates/my_template/assets/images/favicons/favicon-96x96.png') }}">
-<link rel="icon" type="image/png" sizes="16x16" href="{{ secure_asset('templates/my_template/assets/images/favicons/favicon-16x16.png') }}">
-<link rel="manifest" href="/manifest.json">
-<meta name="msapplication-TileColor" content="#ffffff">
-<meta name="msapplication-TileImage" content="assets/images/favicons/ms-icon-144x144.png">
-<meta name="theme-color" content="#ffffff">
-<meta name="csrf-token" content="{{ csrf_token() }}">
-
-<!-- Open Graph Meta Tags -->
-<meta property="og:title" content="@yield('title')" />
-<meta property="og:description" content="Я професійний програміст дизайнер з досвідом у Figma, HTML5, CSS3, Bootstrap, Javascript, PHP, WordPress, MySQL та Laravel. Моя робота — це не лише код, а й мистецтво створення функціональних та естетичних веб-рішень." />
-<meta property="og:image" content="{{ secure_asset('templates/my_template/assets/images/about-team-img2.png') }}" />
-<meta property="og:image:alt" content="Профессиональный программист-дизайнер" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="{{ secure_url('/') }}" />
-
-<!-- Twitter Meta Tags -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="@yield('title')" />
-<meta name="twitter:description" content="Я професійний програміст дизайнер з досвідом у Figma, HTML5, CSS3, Bootstrap, Javascript, PHP, WordPress, MySQL та Laravel. Моя робота — це не лише код, а й мистецтво створення функціональних та естетичних веб-рішень." />
-<meta name="twitter:image" content="{{ secure_asset('templates/my_template/assets/images/about-team-img2.png') }}" />
-<meta name="twitter:image:alt" content="Профессиональный программист-дизайнер" />
-
-
-<link rel="stylesheet" href="{{ secure_asset('templates/my_template/assets/css/bootstrap.min.css') }}"/>
-<link rel="stylesheet" href="{{ secure_asset('templates/my_template/assets/css/style.css') }}"/>
-<link rel="stylesheet" href="{{ secure_asset('templates/my_template/assets/css/mobile.css') }}"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"
-    integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"/>
-<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
-</head>
+     <head>
+          <meta charset="UTF-8" />
+          <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <title>@yield('title')</title>
+          <meta name="csrf-token" content="{{ csrf_token() }}">
+          
+          <!-- SEO -->
+          <meta name="description" content="@yield('description', 'Професійний програміст дизайнер із досвідом Laravel, PHP, Figma, JS.')">
+          <link rel="canonical" href="{{ url()->current() }}">
+          
+          <!-- Open Graph / Facebook / Telegram / Viber -->
+          <meta property="og:type" content="website" />
+          <meta property="og:title" content="@yield('title')" />
+          <meta property="og:description" content="@yield('description', 'Я професійний програміст дизайнер з досвідом у Figma, HTML5, CSS3, Bootstrap, Javascript, PHP, WordPress, MySQL та Laravel.')" />
+          <meta property="og:image" content="{{ secure_asset('templates/my_template/assets/images/about-team-img2.png') }}" />
+          <meta property="og:image:alt" content="Профессиональный программист-дизайнер" />
+          <meta property="og:url" content="{{ url()->current() }}" />
+          <meta property="og:site_name" content="Aribas Portfolio" />
+          
+          <!-- Twitter -->
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content="@yield('title')" />
+          <meta name="twitter:description" content="@yield('description', 'Я професійний програміст дизайнер з досвідом у Figma, HTML5, CSS3, Bootstrap, Javascript, PHP, WordPress, MySQL та Laravel.')" />
+          <meta name="twitter:image" content="{{ secure_asset('templates/my_template/assets/images/about-team-img2.png') }}" />
+          <meta name="twitter:image:alt" content="Професійний програміст-дизайнер" />
+          
+          <!-- Telegram Preview -->
+          <meta name="telegram:title" content="@yield('title')">
+          <meta name="telegram:description" content="@yield('description', 'Розробка Laravel сайтів на замовлення. Дизайн + Backend.')" />
+          <meta name="telegram:image" content="{{ secure_asset('templates/my_template/assets/images/about-team-img2.png') }}">
+          
+          <!-- Favicon -->
+          <link rel="apple-touch-icon" sizes="180x180" href="{{ secure_asset('templates/my_template/assets/images/favicons/apple-icon-180x180.png') }}">
+          <link rel="icon" type="image/png" sizes="32x32" href="{{ secure_asset('templates/my_template/assets/images/favicons/favicon-32x32.png') }}">
+          <link rel="manifest" href="/manifest.json">
+          <meta name="theme-color" content="#ffffff">
+          
+          <!-- Styles -->
+          <link rel="stylesheet" href="{{ secure_asset('templates/my_template/assets/css/bootstrap.min.css') }}"/>
+          <link rel="stylesheet" href="{{ secure_asset('templates/my_template/assets/css/style.css') }}"/>
+          <link rel="stylesheet" href="{{ secure_asset('templates/my_template/assets/css/mobile.css') }}"/>
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"/>
+          <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+          </head>
 <body>
     <!-- HEADER-SECTION -->
     <div class="home-header-section">
