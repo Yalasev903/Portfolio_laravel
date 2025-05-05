@@ -16,6 +16,10 @@ RUN npm install --legacy-peer-deps && npm run build
 
 RUN cp .env.example .env || true
 RUN php artisan key:generate --force
+
+# ✅ Добавим симлинк для storage
+RUN php artisan storage:link
+
 RUN php artisan config:clear && php artisan config:cache
 RUN chmod -R 775 storage bootstrap/cache && chown -R www-data:www-data storage bootstrap/cache
 

@@ -18,19 +18,19 @@ class PostSeeder extends Seeder
         $posts = [
             [
                 'title' => 'Сайт бронювання (Booking clone)',
-                'img' => 'images/portfolio/booking.webp',
+                'img' => 'files/desctop.png',
                 'text' => 'Сайт бронювання на Laravel з підтримкою API для готелів та авто, автоматична конвертація зображень у .webp, адміністрування CMS.',
                 'cat_id' => $devCategory->id,
             ],
             [
                 'title' => 'Чат додаток на Laravel (Chirper)',
-                'img' => 'images/portfolio/chirper.webp',
+                'img' => 'files/chirper.png',
                 'text' => 'Чат-додаток з реєстрацією, профілем, редагуванням та видаленням повідомлень. Реалізовано на Laravel Jetstream.',
                 'cat_id' => $devCategory->id,
             ],
             [
                 'title' => 'Книга рецептів (WordPress)',
-                'img' => 'images/portfolio/recipes.webp',
+                'img' => 'files/image_2024-05-30_18-08-02.png',
                 'text' => 'Мультиязичний сайт рецептів з підтримкою плагінів, зображеннями через ChatGPT 4.0, генерацією тексту за допомогою AI.',
                 'cat_id' => $designCategory->id,
             ]
