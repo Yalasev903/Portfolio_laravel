@@ -6,45 +6,40 @@
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <title>@yield('title')</title>
           <meta name="csrf-token" content="{{ csrf_token() }}">
-          
+      
           <!-- SEO -->
           <meta name="description" content="@yield('description', 'Професійний програміст дизайнер із досвідом Laravel, PHP, Figma, JS.')">
           <link rel="canonical" href="{{ url()->current() }}">
-          
+      
           <!-- Open Graph / Facebook / Telegram / Viber -->
           <meta property="og:type" content="website" />
           <meta property="og:title" content="@yield('title')" />
           <meta property="og:description" content="@yield('description', 'Я професійний програміст дизайнер з досвідом у Figma, HTML5, CSS3, Bootstrap, Javascript, PHP, WordPress, MySQL та Laravel.')" />
           <meta property="og:image" content="{{ secure_asset('templates/my_template/assets/images/about-team-img2.png') }}" />
-          <meta property="og:image:alt" content="Профессиональный программист-дизайнер" />
+          <meta property="og:image:alt" content="Професійний програміст-дизайнер" />
           <meta property="og:url" content="{{ url()->current() }}" />
-          <meta property="og:site_name" content="Aribas Portfolio" />
-          
+          <meta property="og:site_name" content="Portfolio" />
+      
           <!-- Twitter -->
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:title" content="@yield('title')" />
           <meta name="twitter:description" content="@yield('description', 'Я професійний програміст дизайнер з досвідом у Figma, HTML5, CSS3, Bootstrap, Javascript, PHP, WordPress, MySQL та Laravel.')" />
           <meta name="twitter:image" content="{{ secure_asset('templates/my_template/assets/images/about-team-img2.png') }}" />
           <meta name="twitter:image:alt" content="Професійний програміст-дизайнер" />
-          
-          <!-- Telegram Preview -->
-          <meta name="telegram:title" content="@yield('title')">
-          <meta name="telegram:description" content="@yield('description', 'Розробка Laravel сайтів на замовлення. Дизайн + Backend.')" />
-          <meta name="telegram:image" content="{{ secure_asset('templates/my_template/assets/images/about-team-img2.png') }}">
-          
+      
           <!-- Favicon -->
           <link rel="apple-touch-icon" sizes="180x180" href="{{ secure_asset('templates/my_template/assets/images/favicons/apple-icon-180x180.png') }}">
           <link rel="icon" type="image/png" sizes="32x32" href="{{ secure_asset('templates/my_template/assets/images/favicons/favicon-32x32.png') }}">
           <link rel="manifest" href="/manifest.json">
           <meta name="theme-color" content="#ffffff">
-          
+      
           <!-- Styles -->
           <link rel="stylesheet" href="{{ secure_asset('templates/my_template/assets/css/bootstrap.min.css') }}"/>
           <link rel="stylesheet" href="{{ secure_asset('templates/my_template/assets/css/style.css') }}"/>
           <link rel="stylesheet" href="{{ secure_asset('templates/my_template/assets/css/mobile.css') }}"/>
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"/>
           <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
-          </head>
+      </head>
 <body>
     <!-- HEADER-SECTION -->
     <div class="home-header-section">
