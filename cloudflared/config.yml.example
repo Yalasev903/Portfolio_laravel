@@ -1,0 +1,20 @@
+# Cloudflare Tunnel configuration example.
+#
+# 1) Run `docker compose run --rm cloudflared tunnel login` and follow the browser flow.
+# 2) Create a tunnel ID: `docker compose run --rm cloudflared tunnel create portfolio-tunnel`
+# 3) Route a hostname in Cloudflare DNS: `docker compose run --rm cloudflared tunnel route dns portfolio-tunnel <your-subdomain.yourdomain.com>`
+# 4) Copy the generated tunnel ID and credential JSON into this folder.
+
+# Replace with the tunnel UUID or name.
+tunnel: REPLACE_WITH_TUNNEL_ID
+
+# Replace with the generated JSON file name, e.g. 1234-uuid.json
+credentials-file: /etc/cloudflared/REPLACE_WITH_TUNNEL_ID.json
+
+ingress:
+  - hostname: <your-subdomain>.yourdomain.com
+    service: https://nginx:443
+    originRequest:
+      noTLSVerify: true
+
+  - service: http_status:404

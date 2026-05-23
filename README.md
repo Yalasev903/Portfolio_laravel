@@ -29,6 +29,95 @@
 
 ---
 
+## 🔐 Локальная HTTPS разработка
+
+Для безопасного локального запуска через Nginx добавлен HTTPS-порт `8443`.
+
+1. Создайте локальные сертификаты, например с `mkcert`:
+
+```bash
+mkcert -install
+mkcert -key-file certs/localhost.key -cert-file certs/localhost.crt localhost 127.0.0.1 ::1
+```
+
+2. Запустите контейнеры:
+
+```bash
+docker compose up --build
+```
+
+3. Откройте приложение в браузере:
+
+```text
+https://localhost:8443
+```
+
+Если `mkcert` недоступен, используйте OpenSSL и добавьте `subjectAltName`.
+
+---
+
+## 🌐 Доступ извне через Cloudflare Tunnel
+
+Если нужно открыть сайт для других устройств и обеспечить HTTPS через Cloudflare, добавлен сервис `cloudflared`.
+
+### Правильный способ (рекомендуется)
+
+1. Зарегистрируйте бесплатный аккаунт на Cloudflare.
+2. Добавьте любой домен в Cloudflare и настройте DNS.
+3. Запустите локальный Cloudflare login из проекта:
+
+```bash
+docker compose run --rm cloudflared tunnel login
+```
+
+4. Создайте туннель:
+
+```bash
+docker compose run --rm cloudflared tunnel create portfolio-tunnel
+```
+
+5. Создайте маршрут DNS для нужного хоста:
+
+```bash
+docker compose run --rm cloudflared tunnel route dns portfolio-tunnel <your-subdomain>.yourdomain.com
+```
+
+6. Скопируйте сгенерированный UUID и JSON-файл в `cloudflared/config.yml`, используя шаблон `cloudflared/config.yml.example`.
+
+7. Запустите стек с включенным профилем Cloudflare:
+
+```bash
+docker compose --profile cloudflared up -d
+```
+
+8. Откройте сайт по адресу:
+
+```text
+https://<your-subdomain>.yourdomain.com
+```
+
+### Быстрый вариант без публичного домена
+
+Если домена нет, можно временно использовать Cloudflare trycloudflare. Это бесплатный, но экспериментальный способ:
+
+```bash
+docker run --rm cloudflare/cloudflared:latest tunnel --url http://localhost:8080
+```
+
+Он выдаст временный адрес вида `https://<random>.trycloudflare.com`.
+
+> Обратите внимание: `trycloudflare.com` не предназначен для постоянного использования и не гарантирует стабильность.
+
+---
+
+### 🧩 Где менять настройки
+
+- `docker-compose.yml` — добавлен сервис `cloudflared`
+- `cloudflared/config.yml.example` — шаблон для реального туннеля
+- `.gitignore` — исключены приватные файлы туннеля и сертификаты
+
+---
+
 ### 🐳 Используемый `Dockerfile`
 
 ```Dockerfile

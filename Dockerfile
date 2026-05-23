@@ -2,31 +2,37 @@ FROM php:8.2-fpm
 
 RUN apt-get update && apt-get install -y \
     git zip unzip curl libzip-dev libpng-dev libonig-dev libxml2-dev \
-    sqlite3 libsqlite3-dev nginx npm nodejs supervisor netcat-openbsd
+    sqlite3 libsqlite3-dev nodejs npm netcat-openbsd \
+    && rm -rf /var/lib/apt/lists/*
 
-RUN docker-php-ext-install pdo pdo_mysql pdo_sqlite mbstring exif pcntl bcmath zip
+RUN groupmod -o -g 1000 www-data \
+    && usermod -o -u 1000 -g 1000 www-data
+
+RUN docker-php-ext-install \
+    pdo pdo_mysql pdo_sqlite \
+    mbstring exif pcntl bcmath zip
 
 COPY --from=composer:2.6 /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www
+
+COPY composer.json composer.lock ./
+RUN composer install --no-interaction --prefer-dist --no-scripts
+
+COPY package.json package-lock.json ./
+RUN npm install --legacy-peer-deps
+
 COPY . .
 
-RUN composer install --no-interaction --prefer-dist --optimize-autoloader
-RUN npm install --legacy-peer-deps && npm run build
+RUN npm run build
 
-RUN cp .env.example .env || true
-RUN php artisan key:generate --force
+RUN chmod -R 775 storage bootstrap/cache \
+    && chown -R www-data:www-data storage bootstrap/cache
 
-# ✅ Добавим симлинк для storage
-RUN php artisan storage:link
+EXPOSE 9000
 
-RUN php artisan config:clear && php artisan config:cache
-RUN chmod -R 775 storage bootstrap/cache && chown -R www-data:www-data storage bootstrap/cache
+COPY entrypoint.sh /usr/local/bin/docker-entrypoint
+RUN chmod +x /usr/local/bin/docker-entrypoint
 
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-COPY nginx.conf /etc/nginx/nginx.conf
-COPY supervisor.conf /etc/supervisor/conf.d/supervisord.conf
-
-EXPOSE 8080
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["docker-entrypoint"]
+CMD ["php-fpm"]

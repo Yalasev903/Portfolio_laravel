@@ -62,7 +62,7 @@
   function elFinderBrowser (callback, value, meta) {
     tinymce.activeEditor.windowManager.openUrl({
         title: 'File Manager',
-        url: '{{ secure_asset('/elfinder/tinymce5') }}',
+        url: '{{ asset('/elfinder/tinymce5') }}',
         /**
          * On message will be triggered by the child window
          *
@@ -128,6 +128,6 @@
 <!-- /.content -->
 
 @section('scripts')
-<script src="{{ secure_asset('js/app.js') }}"></script>
+<script src="{{ asset('js/app.js') }}"></script>
 @endsection
 @endsection

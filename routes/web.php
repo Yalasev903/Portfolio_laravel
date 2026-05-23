@@ -15,7 +15,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::middleware(['role:admin'])->prefix('admin_panel')->group(function () {
+Route::middleware(['auth', 'role:admin'])->prefix('admin_panel')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('homeAdmin');
 
     Route::resource('category', CategoryController::class);
@@ -45,7 +45,7 @@ Route::get('/contact', function () {
 Route::post('/contact-form', [ContactFormController::class, 'submit']);
 
 Route::get('/coming-soon', function () {
-    return view('templates.my_template.coming-soon');
+    return view('templates.my_template.comming-soon');
 });
 
 Route::get('/faq', function () {
@@ -53,19 +53,19 @@ Route::get('/faq', function () {
 });
 
 Route::get('/four-column', function () {
-    return view('templates.my_template.four-column');
+    return redirect()->route('cases_view.index');
 });
 
 Route::get('/infinite-scroll', function () {
-    return view('templates.my_template.infinite-scroll');
+    return redirect()->route('cases_view.index');
 });
 
 Route::get('/load-more', function () {
-    return view('templates.my_template.load-more');
+    return redirect()->route('cases_view.index');
 });
 
 Route::get('/one-column', function () {
-    return view('templates.my_template.one-column');
+    return redirect()->route('cases_view.index');
 });
 
 Route::get('/services', function () {
@@ -77,7 +77,7 @@ Route::get('/single-post', function () {
 });
 
 Route::get('/six-column-full-wide', function () {
-    return view('templates.my_template.six-column-full-wide');
+    return redirect()->route('cases_view.index');
 });
 
 Route::get('/teams', function () {
@@ -89,14 +89,13 @@ Route::get('/testimonial', function () {
 });
 
 Route::get('/three-colum-sidbar', function () {
-    return view('templates.my_template.three-colum-sidbar');
+    return redirect()->route('cases_view.index');
 });
 
 Route::get('/three-column', function () {
-    return view('templates.my_template.three-column');
+    return redirect()->route('cases_view.index');
 });
 
 Route::get('/two-column', function () {
-    return view('templates.my_template.two-column');
+    return redirect()->route('cases_view.index');
 });
-

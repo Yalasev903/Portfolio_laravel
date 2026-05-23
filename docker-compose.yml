@@ -1,0 +1,84 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: portfolio_app
+    restart: always
+    working_dir: /var/www
+    env_file:
+      - .env
+    environment:
+      APP_ENV: local
+      APP_DEBUG: "true"
+      APP_URL: https://portfolio-slasev.biz.ua
+      DB_CONNECTION: mysql
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_DATABASE: portfolio
+      DB_USERNAME: root
+      DB_PASSWORD: root
+    volumes:
+      - ./:/var/www
+      - app_vendor:/var/www/vendor
+      - app_node_modules:/var/www/node_modules
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - portfolio_net
+
+  nginx:
+    image: nginx:alpine
+    container_name: portfolio_nginx
+    restart: always
+    ports:
+      - "8080:80"
+    #   - "8443:443"
+    volumes:
+      - ./:/var/www
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./certs:/etc/nginx/ssl
+    depends_on:
+      - app
+    networks:
+      - portfolio_net
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: portfolio_cloudflared
+    restart: unless-stopped
+    profiles:
+      - cloudflared
+    depends_on:
+      - nginx
+    volumes:
+      - ./cloudflared:/etc/cloudflared
+    command: tunnel --config /etc/cloudflared/config.yml run
+    networks:
+      - portfolio_net
+
+  db:
+    image: mysql:8.0
+    container_name: portfolio_db
+    restart: always
+    environment:
+      MYSQL_DATABASE: portfolio
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    networks:
+      - portfolio_net
+
+volumes:
+  db_data:
+  app_vendor:
+  app_node_modules:
+
+networks:
+  portfolio_net:

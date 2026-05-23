@@ -4,6 +4,10 @@
 /public/hot
 /public/storage
 /storage/*.key
+/certs/*.key
+/certs/*.crt
+/cloudflared/*.json
+/cloudflared/cert.pem
 /vendor
 .env
 .env.backup
@@ -18,3 +22,6 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+.env
+.env.*
+!.env.example

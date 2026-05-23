@@ -45,7 +45,7 @@
       <img src="/admin/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Адмін панель</span>
     </a>
-    <a href="{{ secure_url('/') }}" class="brand-link" target="_blank">
+    <a href="{{ url('/') }}" class="brand-link" target="_blank">
       <img src="/templates/my_template/assets/images/redlight-logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Дивитись сайт</span>
     </a>
